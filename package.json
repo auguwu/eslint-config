@@ -1,0 +1,15 @@
+{
+    "name": "@augu/eslint-config",
+    "description": "📜 Shareable ESLint configuration for my projects",
+    "version": "1.0.0",
+    "files": ["src"],
+    "license": "MIT",
+    "main": "src/index.js",
+    "author": "August <augu@voided.pw>",
+    "peerDependencies": {
+        "eslint": "6.6.0"
+    },
+    "devDependencies": {
+        "eslint": "6.6.0"
+    }
+}
