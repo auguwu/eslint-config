@@ -1,15 +1,21 @@
 {
     "name": "@augu/eslint-config",
     "description": "📜 Shareable ESLint configuration for my projects",
-    "version": "1.0.0",
-    "files": ["src"],
+    "version": "1.0.1",
+    "files": ["config"],
     "license": "MIT",
-    "main": "src/index.js",
+    "main": "config/index.js",
     "author": "August <augu@voided.pw>",
-    "peerDependencies": {
-        "eslint": "6.6.0"
-    },
     "devDependencies": {
-        "eslint": "6.6.0"
+        "@typescript-eslint/eslint-plugin": "2.8.0",
+        "@typescript-eslint/parser": "2.8.0",
+        "eslint-plugin-vue": "6.0.1",
+        "eslint": "6.7.1"
+    },
+    "peerDependencies": {
+        "@typescript-eslint/eslint-plugin": "2.8.0",
+        "@typescript-eslint/parser": "2.8.0",
+        "eslint-plugin-vue": "6.0.1",
+        "eslint": "6.7.1"
     }
 }
