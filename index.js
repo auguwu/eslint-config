@@ -37,7 +37,13 @@ module.exports = {
     rules: {
         'object-curly-spacing': ['error', 'always', { objectsInObjects: false }],
         'no-duplicate-imports': 'error',
+        'no-await-in-loop': 'error',
         'space-in-parens': ['error', 'never'],
+        'dot-notation': ['error', { allowKeywords: false }],
+        'no-new-wrappers': 'error',
+        'no-debugger': 'error',
+        'no-new-func': 'error',
+        'no-caller': 'error',
         'no-with': 'error',
         indent: ['error', 4, { SwitchCase: 1 }],
         quotes: ['error', 'single'],
