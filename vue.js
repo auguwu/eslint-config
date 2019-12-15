@@ -1,5 +1,8 @@
 const { join } = require('path');
 
+/**
+ * Configuration for Vue.js development
+ */
 module.exports = {
     extends: join(__dirname, 'index.js'),
     plugins: ['vue'],

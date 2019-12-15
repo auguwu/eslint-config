@@ -1,3 +1,6 @@
+/**
+ * Basic JavaScript configuration for ESLint
+ */
 module.exports = {
     root: true,
     env: {

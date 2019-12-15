@@ -1,5 +1,8 @@
 const { join } = require('path');
 
+/**
+ * ESLint configuration for TypeScript
+ */
 module.exports = {
     extends: join(__dirname, 'index.js'),
     parser: '@typescript-eslint/parser',
