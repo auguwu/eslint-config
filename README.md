@@ -2,19 +2,12 @@
 > :scroll: **| Shareable ESLint configuration for my projects.**
 
 ## Usage
-> JavaScript
+> `.eslintrc.json`
 
-```json
+```js
 {
-    "extends": "@augu"
-}
-```
-
-> TypeScript
-
-```json
-{
-    "extends": "@augu/ts"
+    // Loads the normal ESLint config
+    "extends": "@augu/eslint-config"
 }
 ```
 
