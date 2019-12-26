@@ -8,11 +8,22 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint'],
     rules: {
+        '@typescript-eslint/adjacent-overload-signatures': 'warn',
         '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+        '@typescript-eslint/no-array-constructor': 'error',
         '@typescript-eslint/no-empty-interface': 'error',
         '@typescript-eslint/no-empty-function': 'error',
         '@typescript-eslint/class-name-casing': 'warn',
         '@typescript-eslint/no-namespace': ['error', { 'allowDeclarations': true }],
-        '@typescript-eslint/array-type': 'error'
+        '@typescript-eslint/array-type': 'error',
+        '@typescript-eslint/brace-style': ['error', 'stroustrup'],
+        '@typescript-eslint/ban-types': ['warn', {
+            types: {
+                'String': {
+                    'message': 'Use "string" instead of "String"',
+                    'fixWith': 'string'
+                }
+            }
+        }]
     }
 };
