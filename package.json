@@ -1,7 +1,7 @@
 {
     "name": "@augu/eslint-config",
     "description": "📜 Shareable ESLint configuration for my projects",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "files": ["index.js", "ts.js", "vue.js"],
     "license": "MIT",
     "main": "index.js",
@@ -12,7 +12,6 @@
     "optionalDependencies": {
         "@typescript-eslint/eslint-plugin": "2.14.0",
         "@typescript-eslint/parser": "2.14.0",
-        "babel-eslint": "10.0.3",
         "eslint-plugin-vue": "6.1.2"
     }
 }
