@@ -13,6 +13,6 @@
         "@typescript-eslint/eslint-plugin": "2.13.0",
         "@typescript-eslint/parser": "2.13.0",
         "babel-eslint": "10.0.3",
-        "eslint-plugin-vue": "6.0.2"
+        "eslint-plugin-vue": "6.1.2"
     }
 }
