@@ -1,17 +1,18 @@
 {
-    "name": "@augu/eslint-config",
-    "description": "📜 Shareable ESLint configuration for my projects",
-    "version": "1.1.0",
-    "files": ["index.js", "ts.js", "vue.js"],
-    "license": "MIT",
-    "main": "index.js",
-    "author": "August <augu@voided.pw>",
-    "devDependencies": {
-        "eslint": "6.8.0"
-    },
-    "optionalDependencies": {
-        "@typescript-eslint/eslint-plugin": "2.19.0",
-        "@typescript-eslint/parser": "2.19.0",
-        "eslint-plugin-vue": "6.1.2"
-    }
+  "name": "@augu/eslint-config",
+  "description": "📜 Shareable ESLint configuration for my projects",
+  "version": "1.2.0",
+  "files": ["index.js", "ts.js", "react.js"],
+  "license": "MIT",
+  "main": "index.js",
+  "author": "Noel <augu@voided.pw>",
+  "repository": "https://github.com/nowoel/eslint-config",
+  "devDependencies": {
+    "eslint": "6.8.0"
+  },
+  "optionalDependencies": {
+    "@typescript-eslint/eslint-plugin": "2.19.0",
+    "@typescript-eslint/parser": "2.19.0",
+    "eslint-plugin-react": "7.18.3"
+  }
 }
