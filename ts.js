@@ -17,6 +17,6 @@ module.exports = {
     '@typescript-eslint/no-extra-semi': 'error',
     '@typescript-eslint/no-namespace': ['error', { 'allowDeclarations': true }],
     '@typescript-eslint/array-type': 'error',
-    '@typescript-eslint/brace-style': ['error', 'stroustrup']
+    '@typescript-eslint/brace-style': ['error', 'multi']
   }
 };

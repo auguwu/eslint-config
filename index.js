@@ -40,21 +40,26 @@ module.exports = {
   rules: {
     'object-curly-spacing': ['error', 'always', { objectsInObjects: false }],
     'no-duplicate-imports': 'error',
+    'no-extra-boolean-cast': 'error',
+    'no-floating-decimal': 'error',
     'space-in-parens': ['error', 'never'],
     'no-new-wrappers': 'error',
+    'no-invalid-this': 'error',
     'no-func-assign': 'error',
     'getter-return': 'error',
     'no-extra-semi': 'error',
-    'no-unused-vars': 'warn',
+    'for-direction': 'error',
     'no-debugger': 'error',
     'no-new-func': 'error',
+    'brace-style': ['error', '1tbs'],
     'use-isnan': 'warn',
     'no-caller': 'error',
     'no-empty': 'error',
     'no-with': 'error',
     indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
-    semi: ['error', 'always']
+    semi: ['error', 'always'],
+    yoda: 'error'
   },
   globals: {
     _config: false,
