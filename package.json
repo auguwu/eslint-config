@@ -8,7 +8,7 @@
   "author": "August <august@augu.dev>",
   "repository": "https://github.com/auguwu/eslint-config",
   "devDependencies": {
-    "eslint": "6.8.0"
+    "eslint": "7.0.0"
   },
   "optionalDependencies": {
     "@typescript-eslint/eslint-plugin": "2.31.0",
