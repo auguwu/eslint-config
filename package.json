@@ -7,7 +7,6 @@
   "main": "index.js",
   "author": "August <august@augu.dev>",
   "repository": "https://github.com/auguwu/eslint-config",
-  "homepage": "https://docs.augu.dev/eslint-config",
   "devDependencies": {
     "eslint": "7.0.0"
   },
