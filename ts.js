@@ -19,7 +19,6 @@ module.exports = {
     '@typescript-eslint/dot-notation': ['error', { allowPrivateClassPropertyAccess: true }],
     '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/brace-style': ['error', '1tbs'],
-    '@typescript-eslint/camelcase': ['error', { genericTypes: 'always' }],
     '@typescript-eslint/ban-types': ['warn', {
       types: {
         "{}": {
