@@ -16,7 +16,6 @@ module.exports = {
     '@typescript-eslint/class-name-casing': 'warn',
     '@typescript-eslint/no-extra-semi': 'error',
     '@typescript-eslint/no-namespace': ['error', { 'allowDeclarations': true }],
-    '@typescript-eslint/dot-notation': ['error', { allowPrivateClassPropertyAccess: true }],
     '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/brace-style': ['error', '1tbs'],
     '@typescript-eslint/ban-types': ['warn', {
@@ -34,8 +33,6 @@ module.exports = {
           "fixWith": "string"
         }
       }
-    }],
-    'dot-notation': 'off',
-    camelcase: 'off' // Use TS ESLint's instead of the normal one
+    }]
   }
 };
