@@ -19,20 +19,76 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+// This file shows of what the config is like (w/o issues)
 
-const { join } = require('path');
+// rule: no-unexpected-multiline
+const a = 0;
+const abcd = a ? 'b' : 'c';
 
-/**
- * ESLint configuration for Vue and JavaScript
- */
-module.exports = {
-  extends: join(__dirname, 'index.js'),
-  plugins: ['vue'],
-  rules: {
-    'vue/no-async-in-computed-properties': 'error',
-    'vue/no-shared-component-data': 'warn',
-    'vue/no-unused-components': 'error',
-    'vue/no-template-key': 'error',
-    'vue/no-unused-vars': 'error'
-  }
+// rule: object-curly-spacing
+const object = {
+  a: 'b'
 };
+
+// rule: no-duplicate-imports
+import 'some-lib.js';
+
+// rule: no-extra-boolean-cast
+const bool = false;
+const b = Boolean(true);
+
+// rule: no-floating-decimal
+const float = 0.7;
+const fl = -0.7;
+
+// rule: no-unsafe-negation
+const key = '';
+if (!(key in {})) {
+  console.error('yip yap');
+}
+
+// rule: no-unsafe-finally
+try {
+  null;
+} catch (ex) {
+  console.error(ex);
+} finally {
+  (function foobar() {
+    return 'baz';
+  }());
+}
+
+// rule: no-sparse-arrays
+const items = ['a', 'b'];
+
+// rule: space-in-parens
+('no space here fellas');
+
+// no-new-wrappers
+const num = Number(23);
+const str = String('lucky');
+const arr = Array(69);
+
+// no-func-assign
+function cccc() {
+  return 'foo';
+}
+
+// no-unreachable
+function boomer() {
+  var escapee = 0;
+}
+
+// getter-return
+class Inheritence {
+  constructor() {
+    this.lucky = 23;
+  }
+
+  get percentage() {
+    return (this.lucky / 100);
+  }
+}
+
+// no-extra-semi
+const d = 'd';

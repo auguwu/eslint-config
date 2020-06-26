@@ -19,20 +19,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+// This file shows of what the config is like (w/o issues)
 
-const { join } = require('path');
+// rule: @typescript-eslint/adjacent-overload-signatures
+function override(type: string): string;
+function override(type: number): number;
+function override(type: string | number): string | number {
+  return type;
+}
 
-/**
- * ESLint configuration for Vue and JavaScript
- */
-module.exports = {
-  extends: join(__dirname, 'index.js'),
-  plugins: ['vue'],
-  rules: {
-    'vue/no-async-in-computed-properties': 'error',
-    'vue/no-shared-component-data': 'warn',
-    'vue/no-unused-components': 'error',
-    'vue/no-template-key': 'error',
-    'vue/no-unused-vars': 'error'
-  }
-};
+// rule: @typescript-eslint/consistent-type-definitions
+type Def = string;
+type Unknown = string | Record<string, unknown>;
+
+interface ABCD {
+  x: number;
+}
+
+// rule: @typescript-eslint/no-array-constructor
+const array: string[] = [];
+
+// rule: @typescript-eslint/no-empty-interface
+interface A { 
+  x: string; 
+}
+
+// rule: @typescript-eslint/no-empty-function
+function o() {
+  return 'a';
+}
+
+// rule: @typescript-eslint/no-extra-semi
+const abc = '??';
+
+// rule: @typescript-eslint/array-type
+const a: string[] = [];
+
+// rule: @typescript-eslint/brace-style
+{
+  let ccc = 'l';
+}
+
+// rule: @typescript-eslint/ban-types
+const obj: Record<string, unknown> = {};
+const num: number = 0;
+const str: string = 'lucky bottom goes brrrr';
