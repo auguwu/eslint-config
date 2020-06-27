@@ -19,27 +19,4 @@
 # SOFTWARE.
 
 echo 'Now linting TypeScript files...'
-
-if ![ -x "$(command -v node)" ]; then
-  echo 'Error: `node` is not installed.'
-  exit 1
-fi
-
-if ![ -x "$(command -v eslint)" ]; then
-  echo 'Error: `eslint` is not installed. Did you do `npm i -g eslint`?' >&2
-  exit 1
-fi
-
-# TODO: Check if node version >=10
-check_node_version() {
-  node_ver=`node -v`
-  printf "%s" node_ver
-}
-
-lint() {
-  echo 'Now linting files...'
-  eslint src --ext .ts --fix
-}
-
-check_node_version
-lint
+eslint tests/ts/src --ext .js --fix
