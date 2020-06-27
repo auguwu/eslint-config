@@ -92,3 +92,84 @@ class Inheritence {
 
 // no-extra-semi
 const d = 'd';
+
+// for-direction
+for (let i = 0; i < 10; i++) {
+  console.log('iteration');
+}
+
+// no-debugger
+console.log('Debugging like a boss');
+
+// no-new-func
+function self() { 
+  return 'self'; 
+}
+
+// brace-style
+const obj = (function abcd() {
+  console.log('debugging like a BOSS');
+});
+
+// use-isnan
+if (isNaN(-1)) {
+  console.log('-1 is not a number');
+}
+
+// no-caller
+['uno', 'dos', 'thres', 'quatro', 'cinco'].map(function span(span) {
+  const num = {
+    'uno': 1,
+    'dos': 2,
+    'thres': 3,
+    'quatro': 4,
+    'cinco': 5
+  };
+
+  // @ts-ignore
+  const number = num[span];
+
+  // @ts-ignore
+  return !(number > 1) ? 1 : span(number - 1) * number;
+});
+
+// no-empty
+{
+  var block = 'abcd';
+  const func = () => {
+    return block;
+  };
+
+  func();
+}
+
+// no-with
+// @ts-ignore
+const random = ({ x, y }) => Math.sqrt(x * x + y * y);
+
+// camelcase
+const r = () => {};
+class Intervine {
+  useCamcelcase() {
+    console.log('cansole dot loggum > self;');
+  }
+}
+
+// indent
+const please =
+  'use'
+    ? 'two'
+    : 'indents';
+
+// quotes
+'you little shit u better use this';
+
+// semi
+'always place a semicolon u noob';
+
+// yoda
+const x = 1;
+const y = 2;
+if (x > y) {
+  console.log('yoda speaks like this u noob');
+}
