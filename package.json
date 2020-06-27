@@ -12,8 +12,8 @@
     "typescript": "3.9.5"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "3.3.0",
-    "@typescript-eslint/parser": "3.3.0",
+    "@typescript-eslint/eslint-plugin": "3.4.0",
+    "@typescript-eslint/parser": "3.4.0",
     "eslint-plugin-vue": "6.2.2"
   }
 }
