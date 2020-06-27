@@ -19,6 +19,4 @@
 # SOFTWARE.
 
 echo 'Now linting JavaScript files...'
-printf '%s\n' $PWD
-
 eslint ./tests/js/src --ext .js --fix
