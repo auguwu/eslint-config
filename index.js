@@ -92,4 +92,4 @@ module.exports = {
     _config: false,
     console: true
   }
-};
+}; // breaking change
