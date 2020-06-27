@@ -19,4 +19,4 @@
 # SOFTWARE.
 
 echo 'Now linting TypeScript files...'
-eslint tests/ts/src --ext .js --fix
+eslint ./tests/ts/src --ext .ts --fix
