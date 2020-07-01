@@ -9,7 +9,7 @@
   "repository": "https://github.com/auguwu/eslint-config",
   "devDependencies": {
     "eslint": "7.3.1",
-    "typescript": "3.9.5"
+    "typescript": "3.9.6"
   },
   "optionalDependencies": {
     "@typescript-eslint/eslint-plugin": "3.5.0",
