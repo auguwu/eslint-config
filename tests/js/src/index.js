@@ -161,10 +161,7 @@ class Intervine {
 }
 
 // indent
-const please =
-  'use'
-    ? 'two'
-    : 'indents';
+const please = isNaN(0) ? 'use' : '2 indents';
 
 // quotes
 'you little shit u better use this';

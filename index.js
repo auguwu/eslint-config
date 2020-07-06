@@ -91,7 +91,6 @@ module.exports = {
     camelcase: 'error',
     indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
-    curly: ['error', 'multi'],
     semi: ['error', 'always'],
     yoda: 'error'
   },
