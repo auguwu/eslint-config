@@ -36,7 +36,6 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 'error',
     '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/prefer-as-const': 'error',
-    '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/no-extra-semi': 'error',
     '@typescript-eslint/no-namespace': ['error', { 'allowDeclarations': true }],
     '@typescript-eslint/brace-style': ['error', '1tbs'],
