@@ -2,7 +2,7 @@
  * Copyright (c) 2019-2020 August
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
+ * of this software and associated documentation files (the 'Software'), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
@@ -11,7 +11,7 @@
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -35,23 +35,25 @@ module.exports = {
     '@typescript-eslint/no-array-constructor': 'error',
     '@typescript-eslint/no-empty-interface': 'error',
     '@typescript-eslint/no-empty-function': 'error',
+    '@typescript-eslint/prefer-as-const': 'error',
+    '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/no-extra-semi': 'error',
     '@typescript-eslint/no-namespace': ['error', { 'allowDeclarations': true }],
-    '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/brace-style': ['error', '1tbs'],
+    '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/ban-types': ['warn', {
       types: {
-        "{}": {
-          "message": "Use an object instead",
-          "fixWith": "object"
+        '{}': {
+          'message': 'Use type Record<string, T> instead',
+          'fixWith': 'object'
         },
-        "Number": {
-          "message": "Use `number` instead",
-          "fixWith": "number"
+        'Number': {
+          'message': 'Use the \'number\' type instead',
+          'fixWith': 'number'
         },
-        "String": {
-          "message": "Use `string` instead",
-          "fixWith": "string"
+        'String': {
+          'message': 'Use the \'string\' type instead',
+          'fixWith': 'string'
         }
       }
     }]

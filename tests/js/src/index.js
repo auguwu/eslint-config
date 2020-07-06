@@ -21,6 +21,11 @@
  */
 // This file shows of what the config is like (w/o issues)
 
+// rule: no-constant-condition
+if (e) {
+  console.log('a');
+}
+
 // rule: no-unexpected-multiline
 const a = 0;
 const abcd = a ? 'b' : 'c';
