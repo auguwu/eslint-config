@@ -43,7 +43,7 @@ module.exports = {
     '@typescript-eslint/ban-types': ['warn', {
       types: {
         '{}': {
-          'message': 'Use type Record<string, T> instead',
+          'message': 'Use type Record<string, unknown> instead',
           'fixWith': 'object'
         },
         'Number': {

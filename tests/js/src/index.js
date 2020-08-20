@@ -175,3 +175,21 @@ const y = 2;
 if (x > y) {
   console.log('yoda speaks like this u noob');
 }
+
+// rule: valid-jsdoc
+/**
+ * This is valid JSDoc
+ * @param {string} abcd ur gay lol
+ * @returns {Promise<void>} gay bottom
+ */
+const iBottom = (abcd) => new Promise();
+
+// rule: array-bracket-spacing
+const [uwu, owo, dwd, cwc] = [];
+
+// rule: eqeqeq
+let val = false;
+if (val !== false)
+  void 0;
+
+// rule: eol-last

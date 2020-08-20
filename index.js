@@ -63,6 +63,7 @@ module.exports = {
     'no-unexpected-multiline': 'error',
     'no-constant-condition': 'error',
     'no-extra-boolean-cast': 'error',
+    'array-bracket-spacing': ['error', 'never'],
     'object-curly-spacing': ['error', 'always', { objectsInObjects: false }],
     'no-duplicate-imports': 'error',
     'no-floating-decimal': 'error',
@@ -79,16 +80,36 @@ module.exports = {
     'getter-return': 'error',
     'no-extra-semi': 'error',
     'for-direction': 'error',
+    'arrow-spacing': ['error', { before: true, after: true }],
     'no-dupe-args': 'error',
     'no-dupe-keys': 'error',
     'no-debugger': 'error',
     'no-new-func': 'error',
     'brace-style': ['error', '1tbs'],
+    'valid-jsdoc': ['warn', {
+      requireReturnDescription: false,
+      requireReturn: false,
+      prefer: {
+        exception: 'throws',
+        argument: 'param',
+        arg: 'param'
+      },
+      preferType: {
+        Boolean: 'boolean',
+        Symbol: 'symbol',
+        Number: 'number',
+        String: 'string',
+        Object: 'object',
+        date: 'Date'
+      }
+    }],
     'use-isnan': 'warn',
     'no-caller': 'error',
     'no-empty': 'error',
+    'eol-last': 'warn',
     'no-with': 'error',
     camelcase: 'error',
+    eqeqeq: 'error',
     indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
@@ -96,6 +117,7 @@ module.exports = {
   },
   globals: {
     _config: false,
-    console: true
+    console: true,
+    BigInt: true
   }
 };
