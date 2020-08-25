@@ -1,15 +1,14 @@
 {
   "name": "@augu/eslint-config",
   "description": "📜 Shareable ESLint configuration for my projects",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "files": ["index.js", "ts.js", "vue.js"],
   "license": "MIT",
   "main": "index.js",
   "author": "August <august@augu.dev>",
   "repository": "https://github.com/auguwu/eslint-config",
   "devDependencies": {
-    "eslint": "7.7.0",
-    "typescript": "4.0.2"
+    "eslint": "7.7.0"
   },
   "optionalDependencies": {
     "@typescript-eslint/eslint-plugin": "3.10.1",
