@@ -86,23 +86,6 @@ module.exports = {
     'no-debugger': 'error',
     'no-new-func': 'error',
     'brace-style': ['error', '1tbs'],
-    'valid-jsdoc': ['warn', {
-      requireReturnDescription: false,
-      requireReturn: false,
-      prefer: {
-        exception: 'throws',
-        argument: 'param',
-        arg: 'param'
-      },
-      preferType: {
-        Boolean: 'boolean',
-        Symbol: 'symbol',
-        Number: 'number',
-        String: 'string',
-        Object: 'object',
-        date: 'Date'
-      }
-    }],
     'use-isnan': 'warn',
     'no-caller': 'error',
     'no-empty': 'error',
