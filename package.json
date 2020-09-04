@@ -1,19 +1,19 @@
 {
   "name": "@augu/eslint-config",
   "description": "📜 Shareable ESLint configuration for my projects",
-  "version": "1.7.2",
-  "files": ["index.js", "ts.js", "vue.js"],
+  "version": "1.7.3",
+  "files": ["index.js", "ts.js", "vue.js", "vue-ts.js", "nuxt.js", "nuxt-ts.js"],
   "license": "MIT",
   "main": "index.js",
   "author": "August <august@augu.dev>",
   "repository": "https://github.com/auguwu/eslint-config",
   "devDependencies": {
-    "eslint": "7.7.0",
+    "eslint": "7.8.1",
     "typescript": "4.0.2"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "3.10.1",
-    "@typescript-eslint/parser": "3.10.1",
+    "@typescript-eslint/eslint-plugin": "4.0.1",
+    "@typescript-eslint/parser": "4.0.1",
     "babel-eslint": "10.1.0",
     "eslint-plugin-nuxt": "1.0.0",
     "eslint-plugin-vue": "6.2.2",
