@@ -20,6 +20,8 @@
  * SOFTWARE.
  */
 
+const { join } = require('path');
+
 /**
  * Add React + TypeScript project support
  */
