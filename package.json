@@ -16,7 +16,7 @@
     "@typescript-eslint/parser": "4.2.0",
     "babel-eslint": "10.1.0",
     "eslint-plugin-nuxt": "1.0.0",
-    "eslint-plugin-react": "7.21.1",
+    "eslint-plugin-react": "7.21.2",
     "eslint-plugin-vue": "6.2.2",
     "vue-eslint-parser": "7.1.0"
   }
