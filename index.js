@@ -67,6 +67,7 @@ module.exports = {
     'object-curly-spacing': ['error', 'always', { objectsInObjects: false }],
     'no-duplicate-imports': 'error',
     'no-floating-decimal': 'error',
+    'no-trailing-spaces': 'warn',
     'no-unsafe-negation': 'error',
     'default-param-last': 'error',
     'no-unsafe-finally': 'error',
