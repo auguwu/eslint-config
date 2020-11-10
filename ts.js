@@ -37,15 +37,14 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/prefer-as-const': 'error',
     '@typescript-eslint/no-extra-semi': 'error',
-    '@typescript-eslint/no-namespace': ['error', { 'allowDeclarations': true }],
+    '@typescript-eslint/no-this-alias': ['error', { allowDestructuring: true }],
+    '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
     '@typescript-eslint/brace-style': ['error', '1tbs'],
-    '@typescript-eslint/array-type': 'error',
+    '@typescript-eslint/array-type': 'warn',
     '@typescript-eslint/ban-types': ['warn', {
       types: {
-        '{}': {
-          'message': 'Use type Record<string, unknown> instead',
-          'fixWith': 'object'
-        },
+        '{}': false,
+        'object': false,
         'Number': {
           'message': 'Use the \'number\' type instead',
           'fixWith': 'number'

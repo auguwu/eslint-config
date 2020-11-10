@@ -1,7 +1,7 @@
 {
   "name": "@augu/eslint-config",
   "description": "📜 Shareable ESLint configuration for my projects",
-  "version": "1.8.3",
+  "version": "1.9.0",
   "files": ["index.js", "ts.js", "vue.js", "vue-ts.js", "nuxt.js", "nuxt-ts.js", "react.js", "react-ts.js"],
   "license": "MIT",
   "main": "index.js",
