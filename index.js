@@ -80,7 +80,7 @@ module.exports = {
     'no-extend-native': 'error',
     'space-in-parens': ['error', 'never'],
     'no-new-wrappers': 'error',
-    'no-cond-assign': ['error', 'except-params'],
+    'no-cond-assign': 'error',
     'no-func-assign': 'error',
     'accessor-pairs': ['error', { setWithoutGet: true, enforceClassMembers: true }],
     'no-unreachable': 'error',
