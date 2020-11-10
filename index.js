@@ -82,7 +82,7 @@ module.exports = {
     'no-new-wrappers': 'error',
     'no-cond-assign': 'error',
     'no-func-assign': 'error',
-    'accessor-pairs': ['error', { setWithoutGet: true, enforceClassMembers: true }],
+    'accessor-pairs': ['error', { setWithoutGet: true }],
     'no-unreachable': 'error',
     'getter-return': 'error',
     'no-extra-semi': 'error',
