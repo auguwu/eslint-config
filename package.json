@@ -28,14 +28,5 @@
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-vue": "7.5.0",
     "vue-eslint-parser": "7.4.1"
-  },
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "4.14.1",
-    "@typescript-eslint/parser": "4.14.1",
-    "babel-eslint": "10.1.0",
-    "eslint-plugin-nuxt": "2.0.0",
-    "eslint-plugin-react": "7.22.0",
-    "eslint-plugin-vue": "7.5.0",
-    "vue-eslint-parser": "7.4.1"
   }
 }
