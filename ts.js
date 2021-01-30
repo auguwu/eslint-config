@@ -31,11 +31,15 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     '@typescript-eslint/adjacent-overload-signatures': 'warn',
+    '@typescript-eslint/switch-exhaustiveness-check': 'warn',
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+    '@typescript-eslint/type-annotation-spacing': 'error',
+    '@typescript-eslint/restrict-plus-operands': ['error', { checkCompoundAssignments: true }],
     '@typescript-eslint/no-array-constructor': 'error',
     '@typescript-eslint/no-empty-interface': 'error',
     '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/prefer-as-const': 'error',
+    '@typescript-eslint/space-infix-ops': 'error',
     '@typescript-eslint/no-extra-semi': 'error',
     '@typescript-eslint/no-this-alias': ['error', { allowDestructuring: true }],
     '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
@@ -54,6 +58,16 @@ module.exports = {
           'fixWith': 'string'
         }
       }
-    }]
+    }],
+    '@typescript-eslint/typedef': ['error', {
+      arrayDestructuring: false,
+      arrowParameter: false,
+      memberVariableDeclaration: true,
+      objectDestructuring: false,
+      parameter: true,
+      propertyDeclaration: true,
+      variableDeclaration: false,
+      variableDeclarationIgnoreFunction: false
+    }],
   }
 };
