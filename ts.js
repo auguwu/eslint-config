@@ -31,7 +31,6 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     '@typescript-eslint/adjacent-overload-signatures': 'warn',
-    '@typescript-eslint/switch-exhaustiveness-check': 'warn',
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/type-annotation-spacing': 'error',
     '@typescript-eslint/restrict-plus-operands': ['error', { checkCompoundAssignments: true }],
