@@ -33,7 +33,6 @@ module.exports = {
     '@typescript-eslint/adjacent-overload-signatures': 'warn',
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/type-annotation-spacing': 'error',
-    '@typescript-eslint/restrict-plus-operands': ['error', { checkCompoundAssignments: true }],
     '@typescript-eslint/no-array-constructor': 'error',
     '@typescript-eslint/no-empty-interface': 'error',
     '@typescript-eslint/no-empty-function': 'error',
