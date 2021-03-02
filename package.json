@@ -27,6 +27,6 @@
     "eslint-plugin-nuxt": "2.0.0",
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-vue": "7.7.0",
-    "vue-eslint-parser": "7.5.0"
+    "vue-eslint-parser": "7.6.0"
   }
 }
