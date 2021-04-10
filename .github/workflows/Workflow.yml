@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x, 11.x, 12.x, 13.x, 14.x, 15.x]
+        node-version: [14.x, 15.x]
     steps:
       - uses: actions/checkout@v2
 
@@ -40,10 +40,5 @@ jobs:
 
       - name: Checks for any errors in JavaScript ESLint
         run: |
-          chmod +x ./tests/js/lint.sh
+          chmod +x ./tests/lint.sh
           ./tests/js/lint.sh
-
-      - name: Checks for any errors in TypeScript ESLint
-        run: |
-          chmod +x ./tests/ts/lint.sh
-          ./tests/ts/lint.sh
