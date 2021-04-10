@@ -41,4 +41,4 @@ jobs:
       - name: Checks for any errors in JavaScript ESLint
         run: |
           chmod +x ./tests/lint.sh
-          ./tests/js/lint.sh
+          ./tests/lint.sh
