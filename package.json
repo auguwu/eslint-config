@@ -1,7 +1,7 @@
 {
   "name": "@augu/eslint-config",
   "description": "📜 Shareable ESLint configuration for my projects",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "files": [
     "index.js",
     "ts.js"
@@ -14,8 +14,8 @@
     "eslint": "7.24.0",
     "typescript": "4.2.4"
   },
-  "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "4.21.0",
-    "@typescript-eslint/parser": "4.21.0"
+  "optionalDependencies": {
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0"
   }
 }

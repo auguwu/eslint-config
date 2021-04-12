@@ -1,4 +1,4 @@
-# Copyright (c) 2019-2020 August
+# Copyright (c) 2019-2021 August
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,4 +19,4 @@
 # SOFTWARE.
 
 echo 'Now linting JavaScript files...'
-eslint ./tests/js/src --ext .js --fix
+eslint ./tests/src --ext .js --fix
