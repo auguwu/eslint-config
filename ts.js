@@ -56,16 +56,6 @@ module.exports = {
           'fixWith': 'string'
         }
       }
-    }],
-    '@typescript-eslint/typedef': ['error', {
-      arrayDestructuring: false,
-      arrowParameter: false,
-      memberVariableDeclaration: true,
-      objectDestructuring: false,
-      parameter: true,
-      propertyDeclaration: true,
-      variableDeclaration: false,
-      variableDeclarationIgnoreFunction: false
-    }],
+    }]
   }
 };
