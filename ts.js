@@ -45,6 +45,8 @@ module.exports = {
     '@typescript-eslint/array-type': 'warn',
     '@typescript-eslint/ban-types': ['warn', {
       types: {
+        '{}': false,
+        'object': false,
         'Number': {
           'message': 'Use the \'number\' type instead',
           'fixWith': 'number'

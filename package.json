@@ -1,7 +1,7 @@
 {
   "name": "@augu/eslint-config",
   "description": "📜 Shareable ESLint configuration for my projects",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "files": [
     "index.js",
     "ts.js"
