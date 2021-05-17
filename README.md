@@ -16,10 +16,6 @@
 ## Supports
 - JavaScript (no external deps)
 - TypeScript (requires `@typescript-eslint/parser` and `@typescript-eslint/eslint-plugin`)
-- Nuxt.js + JavaScript (requires `eslint-plugin-nuxt`, `vue-eslint-parser`, `eslint-plugin-vue`, and `babel-eslint`)
-- Nuxt.js + TypeScript (requires `eslint-plugin-nuxt`, `vue-eslint-parser`, `eslint-plugin-vue`, `@typescript-eslint/parser`, `@typescript-eslint/eslint-plugin`)
-- Vue.js (requires `vue-eslint-parser` and `eslint-plugin-vue`)
-- Vue.js + TypeScript (requires `vue-eslint-parser`, `eslint-plugin-vue`, `@typescript-eslint/parser`, `@typescript-eslint/eslint-plugin`)
 
 ## LICENSE
 **@augu/eslint-config** is released under the MIT License, read [here](/LICENSE) for more information.

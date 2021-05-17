@@ -77,7 +77,6 @@ module.exports = {
     'no-unsafe-finally': 'error',
     'default-case-last': 'warn',
     'no-sparse-arrays': 'error',
-    'no-extend-native': 'error',
     'space-in-parens': ['error', 'never'],
     'no-new-wrappers': 'error',
     'no-cond-assign': 'error',
