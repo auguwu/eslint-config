@@ -11,7 +11,7 @@
   "author": "August <cutie@floofy.dev>",
   "repository": "https://github.com/auguwu/eslint-config",
   "devDependencies": {
-    "eslint": "7.28.0",
+    "eslint": "7.29.0",
     "typescript": "4.3.4"
   },
   "optionalDependencies": {
