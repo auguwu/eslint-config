@@ -56,6 +56,9 @@ module.exports = {
           'fixWith': 'string'
         }
       }
-    }]
+    }],
+
+    '@typescript-eslint/indent': ['error', '2'],
+    'indent': 'off'
   }
 };
