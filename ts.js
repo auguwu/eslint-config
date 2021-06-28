@@ -58,7 +58,7 @@ module.exports = {
       }
     }],
 
-    '@typescript-eslint/indent': ['error', '2'],
+    '@typescript-eslint/indent': ['error', 2],
     'indent': 'off'
   }
 };
