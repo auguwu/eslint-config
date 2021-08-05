@@ -36,7 +36,7 @@ jobs:
         run: npm i -g eslint
 
       - name: Installs all local dependencies
-        run: npm ci
+        run: yarn
 
       - name: Checks for any errors in JavaScript ESLint
         run: |
