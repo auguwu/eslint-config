@@ -83,6 +83,9 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true' || steps.yarn-cache.outputs.node-modules-cache-hit != 'true'
         run: yarn install --immutable
 
+      - name: Install ESLint globally
+        run: npm install -g eslint
+
       - name: Checks for any errors in JavaScript ESLint
         run: |
           chmod +x ./tests/lint.sh
