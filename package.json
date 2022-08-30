@@ -6,17 +6,14 @@
   "main": "index.js",
   "author": "Noel <cutie@floofy.dev>",
   "repository": "https://github.com/auguwu/eslint-config",
+  "packageManager": "yarn@3.2.3",
   "files": [
     "index.js",
     "ts.js"
   ],
-  "devDependencies": {
-    "eslint": "7.32.0",
-    "typescript": "4.8.2"
-  },
-  "optionalDependencies": {
+  "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "5.36.0",
-    "@typescript-eslint/parser": "5.36.0"
-  },
-  "packageManager": "yarn@3.2.3"
+    "@typescript-eslint/parser": "5.36.0",
+    "eslint": "8.23.0"
+  }
 }

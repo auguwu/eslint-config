@@ -2,6 +2,7 @@
     "name": "@augu/eslint-config",
     "dockerFile": "Dockerfile",
     "extensions": ["dbaeumer.vscode-eslint"],
+    "postCreateCommand": "yarn config set --home enableTelemetry 0 && yarn install --immutable",
     "build": {
         "args": {
             "USERNAME": "noel"

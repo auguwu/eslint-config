@@ -27,7 +27,7 @@ on:
       - 'issue/gh-**'
       - 'feat/**'
       - nightly
-      - main
+      - master
 
     paths-ignore:
       - '.github/**'
@@ -46,7 +46,7 @@ on:
       - 'issue/gh-**'
       - 'feat/**'
       - nightly
-      - main
+      - master
 
     paths-ignore:
       - '.github/**'
@@ -82,9 +82,6 @@ jobs:
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true' || steps.yarn-cache.outputs.node-modules-cache-hit != 'true'
         run: yarn install --immutable
-
-      - name: Lint project
-        run: yarn lint
 
       - name: Checks for any errors in JavaScript ESLint
         run: |
