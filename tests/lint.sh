@@ -19,4 +19,4 @@
 # SOFTWARE.
 
 echo 'Now linting JavaScript files...'
-eslint ./tests/src --ext .js
+yarn eslint ./tests/src --ext .js
