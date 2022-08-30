@@ -1,0 +1,10 @@
+{
+    "name": "@augu/eslint-config",
+    "dockerFile": "Dockerfile",
+    "extensions": ["dbaeumer.vscode-eslint"],
+    "build": {
+        "args": {
+            "USERNAME": "noel"
+        }
+    }
+}
