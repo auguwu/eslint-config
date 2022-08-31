@@ -86,7 +86,5 @@ jobs:
       - name: Install ESLint globally
         run: npm install -g eslint
 
-      - name: Checks for any errors in JavaScript ESLint
-        run: |
-          chmod +x ./tests/lint.sh
-          ./tests/lint.sh
+      - name: Run vitest
+        run: yarn test:ci

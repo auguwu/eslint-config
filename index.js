@@ -101,7 +101,6 @@ module.exports = {
     'eol-last': 'warn',
     'no-with': 'error',
     eqeqeq: 'error',
-    quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
     semi: ['error', 'always'],
     yoda: 'error'
   },
