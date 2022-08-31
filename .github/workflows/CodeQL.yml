@@ -92,11 +92,5 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
-      - name: Lint project
-        run: yarn lint
-
-      - name: Check for any compile errors
-        run: tsc --noEmit
-
       - name: CodeQL!
         uses: github/codeql-action/analyze@v2
