@@ -77,7 +77,7 @@ jobs:
         uses: auguwu/node-pm-action@master
 
       - name: Install dependencies
-        #if: steps.yarn-cache.outputs.cache-hit != 'true' || steps.yarn-cache.outputs.node-modules-cache-hit != 'true'
+        if: steps.yarn-cache.outputs.cache-hit != 'true' || steps.yarn-cache.outputs.node-modules-cache-hit != 'true'
         run: yarn install --immutable
 
       - name: Install ESLint globally

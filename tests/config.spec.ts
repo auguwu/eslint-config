@@ -182,8 +182,4 @@ describe('ESLint Configuration - JavaScript', () => {
       ]
     `);
   });
-
-  test('heck', () => {
-    expect(false).toBeTruthy();
-  });
 });
