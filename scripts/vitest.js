@@ -43,7 +43,7 @@ const main = async () => {
     });
   });
 
-  const buf = chunks.at(0);
+  const buf = chunks[0];
   if (buf === undefined || buf === null)
     throw new Error('Missing vitest report!');
 

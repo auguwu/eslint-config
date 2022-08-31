@@ -26,11 +26,9 @@ on:
     branches:
       - 'issue/gh-**'
       - 'feat/**'
-      - nightly
       - master
 
     paths-ignore:
-      - '.github/**'
       - '.vscode/**'
       - 'assets/**'
       - 'docker/**'
@@ -49,7 +47,6 @@ on:
       - master
 
     paths-ignore:
-      - '.github/**'
       - '.vscode/**'
       - 'assets/**'
       - 'docker/**'
@@ -70,7 +67,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js v18
+      - name: Setup Node.js v${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
