@@ -31,16 +31,13 @@ const main = async () => {
 
   /** @type {Buffer[]} */
   const chunks = [];
-  let code = -1;
+  let code = 0;
 
   proc.stdout.on('data', chunk => chunks.push(chunk));
   proc.stderr.on('data', chunk => console.error(chunk.toString()));
 
   await new Promise((resolve) => {
-    proc.on('exit', (c) => {
-      code = c ? c : 1;
-      resolve(null);
-    });
+    proc.on('exit', resolve);
   });
 
   const buf = chunks[0];
@@ -59,6 +56,8 @@ const main = async () => {
     for (const assertion of result.assertionResults) {
       if (assertion.status === 'failed') {
         for (const message of assertion.failureMessages) {
+          code = 1;
+
           error(`${assertion.title} in suite ${assertion.ancestorTitles.at(-1)} :: FAILED [${message}]`, {
             file: result.name,
             startLine: assertion.location.line,
