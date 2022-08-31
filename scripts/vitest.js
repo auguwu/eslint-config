@@ -58,14 +58,14 @@ const main = async () => {
         for (const message of assertion.failureMessages) {
           code = 1;
 
-          error(`${assertion.title} in suite ${assertion.ancestorTitles.at(-1)} :: FAILED [${message}]`, {
+          error(`${assertion.title} in suite ${assertion.ancestorTitles[1]} :: FAILED [${message}]`, {
             file: result.name,
             startLine: assertion.location.line,
             startColumn: assertion.location.column
           });
         }
       } else {
-        info(`✔️  ${assertion.title} in suite ${assertion.ancestorTitles.at(-1)} :: PASSED`);
+        info(`✔️  ${assertion.title} in suite ${assertion.ancestorTitles[1]} :: PASSED`);
       }
     }
   }
