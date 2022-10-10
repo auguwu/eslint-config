@@ -36,8 +36,8 @@ __metadata:
     typescript: 4.8.4
     vitest: 0.22.1
   peerDependencies:
-    "@typescript-eslint/eslint-plugin": 5.39.0
-    "@typescript-eslint/parser": 5.39.0
+    "@typescript-eslint/eslint-plugin": 5.40.0
+    "@typescript-eslint/parser": 5.40.0
     eslint: 8.25.0
   languageName: unknown
   linkType: soft
