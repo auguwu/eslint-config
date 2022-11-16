@@ -6,7 +6,7 @@
   "main": "index.js",
   "author": "Noel <cutie@floofy.dev>",
   "repository": "https://github.com/auguwu/eslint-config",
-  "packageManager": "yarn@3.2.4",
+  "packageManager": "yarn@3.3.0",
   "files": [
     "index.js",
     "ts.js"
