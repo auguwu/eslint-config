@@ -27,6 +27,6 @@
     "@types/node": "18.11.19",
     "eslint": "8.33.0",
     "typescript": "4.9.5",
-    "vitest": "0.22.1"
+    "vitest": "0.28.4"
   }
 }
