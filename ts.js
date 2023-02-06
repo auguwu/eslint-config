@@ -1,6 +1,6 @@
 /*
  * 📜 @augu/eslint-config: Shareable ESLint configuration for my projects
- * Copyright (c) 2019-2022 Noel <cutie@floofy.dev>
+ * Copyright (c) 2019-2023 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,43 +21,81 @@
  * SOFTWARE.
  */
 
-const { join } = require('path');
+// @ts-check
+
+const { resolve } = require('path');
 
 /**
- * ESLint configuration for TypeScript
+ * @param {import('eslint').ESLint.ConfigData} config
  */
-module.exports = {
-  extends: join(__dirname, 'index.js'),
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  rules: {
-    '@typescript-eslint/adjacent-overload-signatures': 'warn',
-    '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-    '@typescript-eslint/type-annotation-spacing': 'error',
-    '@typescript-eslint/no-array-constructor': 'error',
-    '@typescript-eslint/no-empty-interface': 'off',
-    '@typescript-eslint/no-empty-function': 'error',
-    '@typescript-eslint/prefer-as-const': 'error',
-    '@typescript-eslint/space-infix-ops': 'error',
-    '@typescript-eslint/no-extra-semi': 'error',
-    '@typescript-eslint/no-this-alias': ['error', { allowDestructuring: true }],
-    '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
-    '@typescript-eslint/brace-style': ['error', '1tbs'],
-    '@typescript-eslint/array-type': 'warn',
-    '@typescript-eslint/indent': 'off',
-    '@typescript-eslint/ban-types': ['warn', {
-      types: {
-        '{}': false,
-        'object': false,
-        'Number': {
-          message: 'Use the \'number\' type instead',
-          fixWith: 'number'
-        },
-        'String': {
-          message: 'Use the \'string\' type instead',
-          fixWith: 'string'
-        }
-      }
-    }]
-  }
-};
+const defineConfig = (config) => config;
+module.exports = defineConfig({
+    extends: resolve(__dirname, 'index.js'),
+    plugins: ['@typescript-eslint'],
+    parser: '@typescript-eslint/parser',
+    rules: {
+        // https://typescript-eslint.io/rules/adjacent-overload-signatures
+        '@typescript-eslint/adjacent-overload-signatures': 'warn',
+
+        // https://typescript-eslint.io/rules/consistent-type-definitions
+        '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+
+        // https://typescript-eslint.io/rules/type-annotation-spacing
+        '@typescript-eslint/type-annotation-spacing': [
+            'error',
+            {
+                // enforces 'const a: string' and not 'const a : string'
+                before: false,
+                after: true
+            }
+        ],
+
+        // https://typescript-eslint.io/rules/no-extra-non-null-assertion
+        '@typescript-eslint/no-extra-non-null-assertion': 'error',
+
+        // https://typescript-eslint.io/rules/no-array-constructor
+        '@typescript-eslint/no-array-constructor': 'error',
+
+        // https://typescript-eslint.io/rules/no-empty-interface
+        '@typescript-eslint/no-empty-interface': [
+            'warn',
+            { allowSingleExtends: true }
+        ],
+
+        // https://typescript-eslint.io/rules/no-empty-function
+        '@typescript-eslint/no-empty-function': 'error',
+
+        // https://typescript-eslint.io/rules/prefer-as-const
+        '@typescript-eslint/prefer-as-const': 'error',
+
+        // https://typescript-eslint.io/rules/space-infix-ops
+        '@typescript-eslint/space-infix-ops': 'error',
+
+        // https://typescript-eslint.io/rules/await-thenable
+        '@typescript-eslint/await-thenable': 'error',
+
+        // https://typescript-eslint.io/rules/no-extra-semi
+        '@typescript-eslint/no-extra-semi': 'error',
+
+        // https://typescript-eslint.io/rules/no-this-alias
+        '@typescript-eslint/no-this-alias': ['error', { allowDestructuring: true }],
+
+        // https://typescript-eslint.io/rules/no-namespace
+        '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
+
+        // https://typescript-eslint.io/rules/brace-style
+        '@typescript-eslint/brace-style': ['error', '1tbs'],
+
+        // https://typescript-eslint.io/rules/array-type
+        '@typescript-eslint/array-type': 'warn',
+
+        // https://typescript-eslint.io/rules/ban-types
+        '@typescript-eslint/ban-types': 'warn',
+
+        // https://typescript-eslint.io/rules/indent
+        '@typescript-eslint/indent': 'off',
+
+        // disable it in the default config since TS ESLint overrides it
+        'brace-style': 'off'
+    }
+});

@@ -1,32 +1,24 @@
 {
   "name": "@augu/eslint-config",
   "description": "📜 Shareable ESLint configuration for my projects",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "license": "MIT",
   "main": "index.js",
   "author": "Noel <cutie@floofy.dev>",
   "repository": "https://github.com/auguwu/eslint-config",
   "packageManager": "yarn@3.4.1",
   "files": [
+    "vue-ts.js",
     "index.js",
+    "vue.js",
     "ts.js"
   ],
-  "scripts": {
-    "test:ci": "node scripts/vitest",
-    "test": "vitest --run"
-  },
-  "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.50.0",
-    "@typescript-eslint/parser": "5.50.0",
-    "eslint": "8.33.0"
-  },
-  "devDependencies": {
-    "@actions/core": "1.10.0",
-    "@augu/tsconfig": "1.1.1",
-    "@types/eslint": "8.21.0",
-    "@types/node": "18.11.19",
-    "eslint": "8.33.0",
-    "typescript": "4.9.5",
-    "vitest": "0.22.1"
+  "optionalDependencies": {
+    "@typescript-eslint/eslint-plugin": ">=5.x",
+    "@typescript-eslint/parser": ">=5.x",
+    "eslint": ">=8.x",
+    "eslint-plugin-react": ">=7.x",
+    "eslint-plugin-vue": ">=9.x",
+    "vue-eslint-parser": ">=9.x"
   }
 }

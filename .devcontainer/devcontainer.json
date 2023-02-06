@@ -1,11 +1,15 @@
 {
     "name": "@augu/eslint-config",
-    "dockerFile": "Dockerfile",
-    "extensions": ["dbaeumer.vscode-eslint"],
-    "postCreateCommand": "yarn config set --home enableTelemetry 0 && yarn install --immutable",
-    "build": {
-        "args": {
-            "USERNAME": "noel"
+    "image": "ghcr.io/auguwu/coder-images/node",
+    "containerUser": "noel",
+    "remoteUser": "noel",
+    "postCreateCommand": "yarn config set --home enableTelemetry 0 && install --immutable",
+    "customizations": {
+        "vscode": {
+            "extensions": ["redhat.vscode-yaml", "dbaeumer.vscode-eslint"]
         }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/sshd:1": {}
     }
 }

@@ -1,6 +1,6 @@
 /*
  * 📜 @augu/eslint-config: Shareable ESLint configuration for my projects
- * Copyright (c) 2019-2022 Noel <cutie@floofy.dev>
+ * Copyright (c) 2019-2023 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,10 +21,16 @@
  * SOFTWARE.
  */
 
-import { defineConfig } from 'vitest/config';
+// @ts-check
 
-export default defineConfig({
-  test: {
-    dir: './tests'
-  }
+const { resolve } = require('path');
+
+/**
+ * @param {import('eslint').ESLint.ConfigData} config
+ */
+const defineConfig = (config) => config;
+module.exports = defineConfig({
+    extends: [resolve(__dirname, 'index.js'), 'plugin:vue/recommended'],
+    plugins: ['vue'],
+    parser: 'vue-eslint-parser'
 });
