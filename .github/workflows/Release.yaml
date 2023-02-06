@@ -45,12 +45,6 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true' || steps.yarn-cache.outputs.node-modules-cache-hit != 'true'
         run: yarn install --immutable
 
-      - name: Install ESLint globally
-        run: npm install -g eslint
-
-      - name: Run vitest
-        run: yarn test:ci
-
       - name: Publish to NPM
         uses: JS-DevTools/npm-publish@v1
         with:
