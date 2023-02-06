@@ -3,7 +3,7 @@
     "image": "ghcr.io/auguwu/coder-images/node",
     "containerUser": "noel",
     "remoteUser": "noel",
-    "postCreateCommand": "yarn config set --home enableTelemetry 0 && install --immutable",
+    "postCreateCommand": "yarn config set --home enableTelemetry 0 && yarn install --immutable",
     "customizations": {
         "vscode": {
             "extensions": ["redhat.vscode-yaml", "dbaeumer.vscode-eslint"]
