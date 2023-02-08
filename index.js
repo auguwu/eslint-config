@@ -81,6 +81,9 @@ module.exports = defineConfig({
         // https://eslint.org/docs/latest/rules/no-constant-condition
         'no-constant-condition': 'error',
 
+        // https://eslint.org/docs/latest/rules/no-useless-constructor
+        'no-useless-constructor': 'error',
+
         // https://eslint.org/docs/latest/rules/no-extra-boolean-cast
         'no-extra-boolean-cast': 'error',
 
@@ -128,6 +131,11 @@ module.exports = defineConfig({
 
         // https://eslint.org/docs/latest/rules/no-cond-assign
         'no-cond-assign': 'error',
+
+        // https://eslint.org/docs/latest/rules/dot-notation
+        'dot-notation': ['error', {
+            allowKeywords: true
+        }],
 
         // https://eslint.org/docs/latest/rules/no-func-assign
         'no-func-assign': 'error',

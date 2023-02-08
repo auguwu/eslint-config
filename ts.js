@@ -40,18 +40,33 @@ module.exports = defineConfig({
         // https://typescript-eslint.io/rules/consistent-type-definitions
         '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
 
+        // https://typescript-eslint.io/rules/prefer-literal-enum-member
+        '@typescript-eslint/prefer-literal-enum-member': ['warn', {
+            allowBitwiseExpressions: true
+        }],
+
         // https://typescript-eslint.io/rules/type-annotation-spacing
         '@typescript-eslint/type-annotation-spacing': [
             'error',
             {
                 // enforces 'const a: string' and not 'const a : string'
                 before: false,
-                after: true
+                after: true,
+                overrides: {
+                    // enforces 'const a: () => string = () => "woof"'
+                    arrow: {
+                        before: true,
+                        after: true
+                    }
+                }
             }
         ],
 
         // https://typescript-eslint.io/rules/no-extra-non-null-assertion
         '@typescript-eslint/no-extra-non-null-assertion': 'error',
+
+        // https://typescript-eslint.io/rules/no-useless-constructor
+        '@typescript-eslint/no-useless-constructor': 'error',
 
         // https://typescript-eslint.io/rules/no-array-constructor
         '@typescript-eslint/no-array-constructor': 'error',
@@ -65,17 +80,30 @@ module.exports = defineConfig({
         // https://typescript-eslint.io/rules/no-empty-function
         '@typescript-eslint/no-empty-function': 'error',
 
+        // https://typescript-eslint.io/rules/no-throw-literal
+        '@typescript-eslint/no-throw-literal': 'error',
+
         // https://typescript-eslint.io/rules/prefer-as-const
         '@typescript-eslint/prefer-as-const': 'error',
 
         // https://typescript-eslint.io/rules/space-infix-ops
         '@typescript-eslint/space-infix-ops': 'error',
 
+        // https://typescript-eslint.io/rules/no-implied-eval
+        '@typescript-eslint/no-implied-eval': 'error',
+
         // https://typescript-eslint.io/rules/await-thenable
         '@typescript-eslint/await-thenable': 'error',
 
         // https://typescript-eslint.io/rules/no-extra-semi
         '@typescript-eslint/no-extra-semi': 'error',
+
+        // https://typescript-eslint.io/rules/dot-notation
+        '@typescript-eslint/dot-notation': ['error', {
+            allowPrivateClassPropertyAccess: true,
+            allowProtectedClassPropertyAccess: false,
+            allowKeywords: true
+        }],
 
         // https://typescript-eslint.io/rules/no-this-alias
         '@typescript-eslint/no-this-alias': ['error', { allowDestructuring: true }],
@@ -96,6 +124,8 @@ module.exports = defineConfig({
         '@typescript-eslint/indent': 'off',
 
         // disable it in the default config since TS ESLint overrides it
+        'no-useless-constructor': 'off',
+        'dot-notation': 'off',
         'brace-style': 'off'
     }
 });

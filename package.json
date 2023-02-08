@@ -1,7 +1,7 @@
 {
   "name": "@augu/eslint-config",
   "description": "📜 Shareable ESLint configuration for my projects",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "license": "MIT",
   "main": "index.js",
   "author": "Noel <cutie@floofy.dev>",
