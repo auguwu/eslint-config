@@ -68,6 +68,9 @@ jobs:
             - name: Install packages
               run: bun install --no-save --frozen-lockfile
 
+            - name: Build package
+              run: bun run build
+
             - name: Check Prettier formatting
               run: bun run scripts/prettier.ts
 
