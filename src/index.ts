@@ -1,6 +1,6 @@
 /*
  * 📜 @augu/eslint-config: Shareable ESLint configuration for my projects
- * Copyright (c) 2019-2023 Noel <cutie@floofy.dev>
+ * Copyright (c) 2019-2024 Noel Towa <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-import { lazy, isObject, type Lazy, tryRequire, hasOwnProperty } from '@noelware/utils';
+import { hasOwnProperty, tryRequire, type Lazy, isObject, lazy } from '@noelware/utils';
 import ts, { type Options as TsOptions } from './configs/typescript';
 import perfectionist from './configs/perfectionist';
 import javascript from './configs/javascript';

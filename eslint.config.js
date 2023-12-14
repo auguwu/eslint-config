@@ -1,6 +1,6 @@
 /*
  * 📜 @augu/eslint-config: Shareable ESLint configuration for my projects
- * Copyright (c) 2019-2024 Noel Towa <cutie@floofy.dev>
+ * Copyright (c) 2019-2023 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,33 +21,6 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty } from '@noelware/utils';
-import type { Linter } from 'eslint';
+const { default: noel } = require('./dist/index.js');
 
-export default async function vue(): Promise<Linter.FlatConfig> {
-    const [parser, plugin] = await Promise.all([
-        import('vue-eslint-parser').then((m) => (hasOwnProperty(m, 'default') ? m.default : m)),
-        import('eslint-plugin-vue').then((m) => (hasOwnProperty(m, 'default') ? m.default : m))
-    ]);
-
-    return {
-        ignores: ['index.html'],
-        languageOptions: {
-            parser: parser as any,
-            sourceType: 'module'
-        },
-        plugins: {
-            vue: plugin
-        },
-        rules: {
-            ...plugin.configs['vue3-recommended'].rules,
-
-            'vue/singleline-html-element-content-newline': 'off',
-            'vue/multi-word-component-names': 'off',
-            'vue/no-multiple-template-root': 'off', // we're using vue 3, so this doesn't matter
-            'vue/max-attributes-per-line': 'off',
-            'vue/html-self-closing': 'off',
-            'vue/html-indent': ['error', 4]
-        }
-    } satisfies Linter.FlatConfig;
-}
+module.exports = noel();

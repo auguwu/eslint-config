@@ -1,6 +1,6 @@
 /*
  * 📜 @augu/eslint-config: Shareable ESLint configuration for my projects
- * Copyright (c) 2019-2023 Noel <cutie@floofy.dev>
+ * Copyright (c) 2019-2024 Noel Towa <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-import { isObject, hasOwnProperty } from '@noelware/utils';
+import { hasOwnProperty, isObject } from '@noelware/utils';
 import type { Linter } from 'eslint';
 import { existsSync } from 'fs';
 import { resolve } from 'path';

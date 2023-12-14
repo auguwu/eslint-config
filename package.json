@@ -6,7 +6,6 @@
     "author": "Noel <cutie@floofy.dev>",
     "repository": "https://github.com/auguwu/eslint-config",
     "packageManager": "yarn@4.0.2",
-    "type": "module",
     "files": [
         "dist"
     ],
@@ -18,9 +17,9 @@
         }
     },
     "scripts": {
-        "build": "tsup --clean --format cjs src/index.ts && tsup --dts --format esm src/index.ts",
-        "lint": "eslint",
-        "fmt": "prettier --write --config ./.prettierrc.json **/*.{js,ts,md,json,yaml,yml}"
+        "build": "tsup --clean --format cjs src/index.ts && tsup --dts --format esm src/index.ts && mv dist/index.d.mts dist/index.d.ts",
+        "lint": "bun run scripts/eslint.ts",
+        "fmt": "bun run scripts/prettier.ts"
     },
     "peerDependenciesMeta": {
         "@typescript-eslint/eslint-plugin": {
@@ -58,10 +57,13 @@
         "vue-eslint-parser": "9.3.2"
     },
     "devDependencies": {
-        "@augu/tsconfig": "1.1.1",
+        "@augu/tsconfig": "1.2.0",
         "@types/eslint": "8.44.8",
         "@types/node": "20.10.4",
-        "eslint": "npm:eslint-ts-patch@8.55.0-1",
+        "bun-types": "1.0.18",
+        "colorette": "2.0.20",
+        "eslint": "8.55.0",
+        "eslint-formatter-codeframe": "7.32.1",
         "prettier": "3.1.1",
         "tsup": "8.0.1",
         "tsx": "4.6.2",
