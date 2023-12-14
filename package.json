@@ -1,24 +1,70 @@
 {
-  "name": "@augu/eslint-config",
-  "description": "📜 Shareable ESLint configuration for my projects",
-  "version": "4.0.1",
-  "license": "MIT",
-  "main": "index.js",
-  "author": "Noel <cutie@floofy.dev>",
-  "repository": "https://github.com/auguwu/eslint-config",
-  "packageManager": "yarn@3.4.1",
-  "files": [
-    "vue-ts.js",
-    "index.js",
-    "vue.js",
-    "ts.js"
-  ],
-  "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": ">=5.x",
-    "@typescript-eslint/parser": ">=5.x",
-    "eslint": ">=8.x",
-    "eslint-plugin-react": ">=7.x",
-    "eslint-plugin-vue": ">=9.x",
-    "vue-eslint-parser": ">=9.x"
-  }
+    "name": "@augu/eslint-config",
+    "description": "📜 @augu/eslint-config is Noel's shared configuration for his projects and for Noelware as well",
+    "version": "5.0.0",
+    "license": "MIT",
+    "author": "Noel <cutie@floofy.dev>",
+    "repository": "https://github.com/auguwu/eslint-config",
+    "packageManager": "yarn@4.0.2",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": {
+            "require": "./dist/index.cjs",
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "scripts": {
+        "build": "tsup --clean --format cjs src/index.ts && tsup --dts --format esm src/index.ts",
+        "lint": "eslint",
+        "fmt": "prettier --write --config ./.prettierrc.json **/*.{js,ts,md,json,yaml,yml}"
+    },
+    "peerDependenciesMeta": {
+        "@typescript-eslint/eslint-plugin": {
+            "optional": true
+        },
+        "@typescript-eslint/parser": {
+            "optional": true
+        },
+        "eslint-config-prettier": {
+            "optional": true
+        },
+        "eslint-plugin-antfu": {
+            "optional": true
+        },
+        "eslint-plugin-perfectionist": {
+            "optional": true
+        },
+        "eslint-plugin-vue": {
+            "optional": true
+        },
+        "vue-eslint-parser": {
+            "optional": true
+        }
+    },
+    "dependencies": {
+        "@actions/core": "1.10.1",
+        "@noelware/utils": "2.4.0",
+        "@typescript-eslint/eslint-plugin": "6.13.2",
+        "@typescript-eslint/parser": "6.13.2",
+        "eslint-config-prettier": "9.1.0",
+        "eslint-plugin-antfu": "2.0.0",
+        "eslint-plugin-perfectionist": "2.5.0",
+        "eslint-plugin-vue": "9.19.2",
+        "local-pkg": "0.5.0",
+        "vue-eslint-parser": "9.3.2"
+    },
+    "devDependencies": {
+        "@augu/tsconfig": "1.1.1",
+        "@types/eslint": "8.44.8",
+        "@types/node": "20.10.4",
+        "eslint": "npm:eslint-ts-patch@8.55.0-1",
+        "prettier": "3.1.1",
+        "tsup": "8.0.1",
+        "tsx": "4.6.2",
+        "typescript": "5.3.3"
+    }
 }

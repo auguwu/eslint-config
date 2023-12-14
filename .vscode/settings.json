@@ -1,7 +1,10 @@
 {
+    "eslint.experimental.useFlatConfig": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "eslint.format.enable": true,
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
-    "[javascript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
     }
 }

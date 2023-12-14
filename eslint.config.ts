@@ -21,16 +21,6 @@
  * SOFTWARE.
  */
 
-// @ts-check
+import noel from './src';
 
-const { resolve } = require('path');
-
-/**
- * @param {import('eslint').ESLint.ConfigData} config
- */
-const defineConfig = (config) => config;
-module.exports = defineConfig({
-    extends: [resolve(__dirname, 'index.js'), 'plugin:vue/recommended'],
-    plugins: ['vue'],
-    parser: 'vue-eslint-parser'
-});
+export default noel();

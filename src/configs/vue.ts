@@ -21,18 +21,33 @@
  * SOFTWARE.
  */
 
-// @ts-check
+import { hasOwnProperty } from '@noelware/utils';
+import type { Linter } from 'eslint';
 
-const { resolve } = require('path');
+export default async function vue(): Promise<Linter.FlatConfig> {
+    const [parser, plugin] = await Promise.all([
+        import('vue-eslint-parser').then((m) => (hasOwnProperty(m, 'default') ? m.default : m)),
+        import('eslint-plugin-vue').then((m) => (hasOwnProperty(m, 'default') ? m.default : m))
+    ]);
 
-/**
- * @param {import('eslint').ESLint.ConfigData} config
- */
-const defineConfig = (config) => config;
-module.exports = defineConfig({
-    extends: [resolve(__dirname, 'ts.js'), resolve(__dirname, 'vue.js')],
-    parser: 'vue-eslint-parser',
-    parserOptions: {
-        parser: '@typescript-eslint/parser'
-    }
-});
+    return {
+        ignores: ['index.html'],
+        languageOptions: {
+            parser: parser as any,
+            sourceType: 'module'
+        },
+        plugins: {
+            vue: plugin
+        },
+        rules: {
+            ...plugin.configs['vue3-recommended'].rules,
+
+            'vue/singleline-html-element-content-newline': 'off',
+            'vue/multi-word-component-names': 'off',
+            'vue/no-multiple-template-root': 'off', // we're using vue 3, so this doesn't matter
+            'vue/max-attributes-per-line': 'off',
+            'vue/html-self-closing': 'off',
+            'vue/html-indent': ['error', 4]
+        }
+    } satisfies Linter.FlatConfig;
+}
