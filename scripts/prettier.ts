@@ -75,7 +75,10 @@ async function main() {
                         colors.isColorSupported ? colors.bold(colors.red('FAILED')) : 'FAILED'
                     } file was not properly formatted. run \`bun run fmt\` outside of CI ${
                         colors.isColorSupported ? colors.bold(`[${sw.stop()}]`) : `[${sw.stop()}]`
-                    }`
+                    }`,
+                    {
+                        file: resolve(ROOT, file)
+                    }
                 );
 
                 continue;

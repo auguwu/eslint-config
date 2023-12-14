@@ -25,6 +25,7 @@
 import { FlatESLint } from 'eslint/use-at-your-own-risk';
 import { Stopwatch } from '@noelware/utils';
 import * as log from './util/logging';
+import type { ESLint } from 'eslint';
 import * as colors from 'colorette';
 import { resolve } from 'node:path';
 
@@ -53,12 +54,46 @@ async function main() {
         );
 
         const contents = await Bun.file(resolve(ROOT, file)).text();
-        const results = await linter.lintText(contents, {
+        const results: ESLint.LintResult[] = await linter.lintText(contents, {
             filePath: resolve(ROOT, file)
         });
 
-        const shouldPrint = formatter.format(results);
-        shouldPrint.length > 0 && console.log(shouldPrint);
+        if (!log.ci) {
+            const shouldPrint = formatter.format(results);
+            shouldPrint.length > 0 && console.log(shouldPrint);
+        } else {
+            for (const result of results) {
+                for (const msg of result.messages) {
+                    switch (msg.severity) {
+                        case 0:
+                            continue;
+
+                        case 1:
+                            log.warn(
+                                `[${msg.ruleId || '(unknown rule)'}] ${msg.message} (line ${msg.line}:${msg.column})`
+                            );
+                            continue;
+
+                        case 2:
+                            log.error(
+                                `${
+                                    colors.isColorSupported ? colors.bold(colors.red('FAILED')) : 'FAILED'
+                                } file [${file}] has failed to lint properly; run \`bun run lint\` outside of CI to fix it: ${
+                                    msg.ruleId || '(unknown rule)'
+                                }: ${msg.message}`,
+                                {
+                                    startColumn: msg.endColumn,
+                                    endColumn: msg.endColumn,
+                                    startLine: msg.line,
+                                    endLine: msg.endLine,
+                                    title: `[${msg.ruleId || '(unknown)'}] ${msg.message}`,
+                                    file: file
+                                }
+                            );
+                    }
+                }
+            }
+        }
 
         log.info(
             `${colors.isColorSupported ? colors.bold(colors.magenta('END')) : 'END'}     ${resolve(ROOT, file)} ${
