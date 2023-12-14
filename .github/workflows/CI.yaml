@@ -66,7 +66,7 @@ jobs:
               uses: oven-sh/setup-bun@v1
 
             - name: Install packages
-              run: bun install --no-save --dry-run --frozen-lockfile
+              run: bun install --no-save --frozen-lockfile
 
             - name: Check Prettier formatting
               run: bun run scripts/prettier.ts
