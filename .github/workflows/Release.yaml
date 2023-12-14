@@ -29,24 +29,17 @@ jobs:
         name: Release a new version
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout repository
+            - name: Checkout source code
               uses: actions/checkout@v4
 
-            - name: Setup Node.js v18
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 18.x
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v1
 
-            - name: Setup Yarn and node-modules cache
-              id: yarn-cache
-              uses: auguwu/node-pm-action@master
+            - name: Install packages
+              run: bun install --no-save --frozen-lockfile
 
-            - name: Install dependencies
-              if: steps.yarn-cache.outputs.cache-hit != 'true' || steps.yarn-cache.outputs.node-modules-cache-hit != 'true'
-              run: yarn install --immutable
-
-            - name: Build artifacts
-              run: yarn build
+            - name: Build package
+              run: bun run build
 
             - name: Publish to NPM
               uses: JS-DevTools/npm-publish@v3
