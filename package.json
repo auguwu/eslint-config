@@ -62,7 +62,7 @@
         "@types/node": "20.10.4",
         "bun-types": "1.0.18",
         "colorette": "2.0.20",
-        "eslint": "8.55.0",
+        "eslint": "8.56.0",
         "eslint-formatter-codeframe": "7.32.1",
         "prettier": "3.1.1",
         "tsup": "8.0.1",
