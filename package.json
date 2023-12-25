@@ -50,7 +50,7 @@
         "@typescript-eslint/eslint-plugin": "6.15.0",
         "@typescript-eslint/parser": "6.15.0",
         "eslint-config-prettier": "9.1.0",
-        "eslint-plugin-antfu": "2.0.0",
+        "eslint-plugin-antfu": "2.1.1",
         "eslint-plugin-perfectionist": "2.5.0",
         "eslint-plugin-vue": "9.19.2",
         "local-pkg": "0.5.0",
