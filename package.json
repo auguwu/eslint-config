@@ -58,7 +58,7 @@
     },
     "devDependencies": {
         "@augu/tsconfig": "1.2.0",
-        "@types/eslint": "8.56.1",
+        "@types/eslint": "8.56.2",
         "@types/node": "20.10.8",
         "bun-types": "1.0.22",
         "colorette": "2.0.20",
