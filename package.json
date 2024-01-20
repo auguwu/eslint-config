@@ -60,7 +60,7 @@
         "@augu/tsconfig": "1.2.0",
         "@types/eslint": "8.56.2",
         "@types/node": "20.11.5",
-        "bun-types": "1.0.23",
+        "bun-types": "1.0.24",
         "colorette": "2.0.20",
         "eslint": "8.56.0",
         "eslint-formatter-codeframe": "7.32.1",
