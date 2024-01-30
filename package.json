@@ -5,7 +5,7 @@
     "license": "MIT",
     "author": "Noel <cutie@floofy.dev>",
     "repository": "https://github.com/auguwu/eslint-config",
-    "packageManager": "yarn@4.0.2",
+    "packageManager": "yarn@4.1.0",
     "files": [
         "dist"
     ],
