@@ -52,7 +52,7 @@
         "eslint-config-prettier": "9.1.0",
         "eslint-plugin-antfu": "2.1.2",
         "eslint-plugin-perfectionist": "2.5.0",
-        "eslint-plugin-vue": "9.21.0",
+        "eslint-plugin-vue": "9.21.1",
         "local-pkg": "0.5.0",
         "vue-eslint-parser": "9.4.2"
     },
