@@ -47,8 +47,8 @@
     "dependencies": {
         "@actions/core": "1.10.1",
         "@noelware/utils": "2.4.0",
-        "@typescript-eslint/eslint-plugin": "6.20.0",
-        "@typescript-eslint/parser": "6.20.0",
+        "@typescript-eslint/eslint-plugin": "6.21.0",
+        "@typescript-eslint/parser": "6.21.0",
         "eslint-config-prettier": "9.1.0",
         "eslint-plugin-antfu": "2.1.2",
         "eslint-plugin-perfectionist": "2.5.0",
