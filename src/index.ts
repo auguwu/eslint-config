@@ -21,19 +21,21 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty, tryRequire, type Lazy, isObject, lazy } from '@noelware/utils';
+import astroConfig, { type Options as AstroOptions } from './configs/astro';
+import { tryRequire, type Lazy, isObject, lazy, hasOwnProperty } from '@noelware/utils';
 import ts, { type Options as TsOptions } from './configs/typescript';
-import perfectionist from './configs/perfectionist';
+import perfectionistConfig from './configs/perfectionist';
 import javascript from './configs/javascript';
 import { resolveModule } from 'local-pkg';
 import type { Linter } from 'eslint';
-import vue from './configs/vue';
+import vueConfig from './configs/vue';
+import defu from 'defu';
 
 // export option types because why not
-export type { TsOptions };
+export type { TsOptions, AstroOptions };
 
 // export them as singular
-export { javascript, perfectionist, ts as typescript, vue };
+export { javascript, perfectionistConfig as perfectionist, ts as typescript, vueConfig as vue, astroConfig as astro };
 
 const createLazilyResolver = (module: string): Lazy<boolean> =>
     lazy(() => {
@@ -53,6 +55,7 @@ const createLazilyResolver = (module: string): Lazy<boolean> =>
 
 const isPerfectionistPluginAvailable = createLazilyResolver('eslint-plugin-perfectionist');
 const isPrettierAvailable = createLazilyResolver('prettier');
+const isAstroAvailable = createLazilyResolver('eslint-plugin-astro');
 const isVueAvailable = createLazilyResolver('vue');
 const isTsAvailable = createLazilyResolver('typescript');
 
@@ -76,6 +79,15 @@ export interface Options {
     perfectionist?: boolean;
 
     /**
+     * Enables the use of linting Astro files via [`eslint-plugin-astro`]. By default, if this is `true`,
+     * then it will only validate JavaScript when parsing through Astro's frontmatter. If `{ typescript: true }`
+     * is passed in, then TypeScript will also be validated through Astro's frontmatter.
+     *
+     * [`eslint-plugin-astro`]: https://npm.im/eslint-plugin-astro.
+     */
+    astro?: boolean | AstroOptions;
+
+    /**
      * Enables the use of ESLint linting `.vue` files.
      */
     vue?: boolean;
@@ -95,31 +107,41 @@ export interface Options {
  * @param options Options object to configure other configurations.
  * @param others Other {@link Linter.FlatConfig `FlatConfig`} configurations to use.
  */
-export default async function noel(
-    options: Options = {
+export default async function noel(opts: Options = {}, ...others: Linter.FlatConfig[]) {
+    const { perfectionist, typescript, astro, vue } = defu<Options, [Options]>(opts, {
         perfectionist: isPerfectionistPluginAvailable.get(),
         typescript: isTsAvailable.get(),
+        astro: isAstroAvailable.get(),
         vue: isVueAvailable.get()
-    },
-    ...others: Linter.FlatConfig[]
-) {
+    });
+
     const configs = [javascript()];
-    if (options.typescript !== undefined) {
-        if (typeof options.typescript === 'boolean') {
+    if (typescript !== undefined) {
+        if (typeof typescript === 'boolean' && !!typescript) {
             configs.push(await ts());
         }
 
-        if (typeof options.typescript === 'string' || isObject(options.typescript)) {
-            configs.push(await ts(options.typescript as any));
+        if (typeof typescript === 'string' || isObject(typescript)) {
+            configs.push(await ts(typescript as any));
         }
     }
 
-    if (!!options.vue) {
-        configs.push(await vue());
+    if (vue !== undefined && !!vue) {
+        configs.push(await vueConfig());
     }
 
-    if (!!options.perfectionist) {
-        configs.push(await perfectionist());
+    if (perfectionist !== undefined && !!perfectionist) {
+        configs.push(await perfectionistConfig());
+    }
+
+    if (astro !== undefined) {
+        if (typeof astro === 'boolean' && !!astro) {
+            configs.push(await astroConfig());
+        }
+
+        if (isObject(astro)) {
+            configs.push(await astroConfig(astro));
+        }
     }
 
     if (isPrettierAvailable.get()) {
