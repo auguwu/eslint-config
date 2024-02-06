@@ -21,21 +21,21 @@
  * SOFTWARE.
  */
 
+import { hasOwnProperty, tryRequire, type Lazy, isObject, lazy } from '@noelware/utils';
 import astroConfig, { type Options as AstroOptions } from './configs/astro';
-import { tryRequire, type Lazy, isObject, lazy, hasOwnProperty } from '@noelware/utils';
+import vueConfig, { type Options as VueOptions } from './configs/vue';
 import ts, { type Options as TsOptions } from './configs/typescript';
 import perfectionistConfig from './configs/perfectionist';
 import javascript from './configs/javascript';
 import { resolveModule } from 'local-pkg';
 import type { Linter } from 'eslint';
-import vueConfig from './configs/vue';
 import defu from 'defu';
 
 // export option types because why not
-export type { TsOptions, AstroOptions };
+export type { AstroOptions, TsOptions, VueOptions };
 
 // export them as singular
-export { javascript, perfectionistConfig as perfectionist, ts as typescript, vueConfig as vue, astroConfig as astro };
+export { astroConfig as astro, javascript, perfectionistConfig as perfectionist, ts as typescript, vueConfig as vue };
 
 const createLazilyResolver = (module: string): Lazy<boolean> =>
     lazy(() => {
@@ -85,12 +85,12 @@ export interface Options {
      *
      * [`eslint-plugin-astro`]: https://npm.im/eslint-plugin-astro.
      */
-    astro?: boolean | AstroOptions;
+    astro?: AstroOptions | boolean;
 
     /**
      * Enables the use of ESLint linting `.vue` files.
      */
-    vue?: boolean;
+    vue?: VueOptions | boolean;
 }
 
 /**
@@ -126,8 +126,14 @@ export default async function noel(opts: Options = {}, ...others: Linter.FlatCon
         }
     }
 
-    if (vue !== undefined && !!vue) {
-        configs.push(await vueConfig());
+    if (vue !== undefined) {
+        if (typeof vue === 'boolean' && !!vue) {
+            configs.push(await vueConfig());
+        }
+
+        if (isObject(vue)) {
+            configs.push(await vueConfig(vue));
+        }
     }
 
     if (perfectionist !== undefined && !!perfectionist) {

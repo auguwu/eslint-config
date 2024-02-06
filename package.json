@@ -1,7 +1,7 @@
 {
     "name": "@augu/eslint-config",
     "description": "📜 @augu/eslint-config is Noel's shared configuration for his projects and for Noelware as well",
-    "version": "5.1.0",
+    "version": "5.1.1",
     "license": "MIT",
     "author": "Noel <cutie@floofy.dev>",
     "repository": "https://github.com/auguwu/eslint-config",

@@ -38,6 +38,8 @@ async function main() {
 
     const glob = new Bun.Glob('**/*.{ts,js,md,yaml,yml,json}');
     log.startGroup('formatting!');
+
+    let failed = false;
     for await (const file of glob.scan({ cwd: ROOT })) {
         if (file.includes('node_modules') || file.includes('dist')) {
             continue;
@@ -53,7 +55,7 @@ async function main() {
         const info = await prettier.getFileInfo(resolve(ROOT, file));
         if (info.inferredParser === null) {
             log.warn(
-                `${colors.isColorSupported ? colors.bold(colors.gray('IGNORED')) : 'IGNORED'}   ${resolve(
+                `${colors.isColorSupported ? colors.bold(colors.gray('IGNORED')) : 'IGNORED'} ${resolve(
                     ROOT,
                     file
                 )} ${colors.isColorSupported ? colors.bold(`[${sw.stop()}]`) : `[${sw.stop()}]`}`
@@ -70,6 +72,7 @@ async function main() {
             });
 
             if (!correct) {
+                failed = true;
                 log.error(
                     `${
                         colors.isColorSupported ? colors.bold(colors.red('FAILED')) : 'FAILED'
@@ -106,7 +109,7 @@ async function main() {
     }
 
     log.endGroup();
-    process.exit(0);
+    process.exit(failed ? 1 : 0);
 }
 
 main().catch((ex) => {

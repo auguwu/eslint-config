@@ -24,7 +24,12 @@
 import { hasOwnProperty } from '@noelware/utils';
 import type { Linter } from 'eslint';
 
+/** Options for the Astro configuration for `@augu/eslint-config`. */
 export interface Options {
+    /**
+     * Enables the use of TypeScript inside of Astro files.
+     * @default 'false'
+     */
     typescript?: boolean;
 }
 

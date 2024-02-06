@@ -24,7 +24,16 @@
 import { hasOwnProperty } from '@noelware/utils';
 import type { Linter } from 'eslint';
 
-export default async function vue(): Promise<Linter.FlatConfig> {
+/** Options for the Vue configuration for `@augu/eslint-config`. */
+export interface Options {
+    /**
+     * Enables the use of TypeScript inside of Vue files.
+     * @default 'false'
+     */
+    typescript?: boolean;
+}
+
+export default async function vue({ typescript }: Options = {}): Promise<Linter.FlatConfig> {
     const [parser, plugin] = await Promise.all([
         import('vue-eslint-parser').then((m) => (hasOwnProperty(m, 'default') ? m.default : m)),
         import('eslint-plugin-vue').then((m) => (hasOwnProperty(m, 'default') ? m.default : m))
@@ -34,7 +43,16 @@ export default async function vue(): Promise<Linter.FlatConfig> {
         ignores: ['index.html'],
         languageOptions: {
             parser: parser as any,
-            sourceType: 'module'
+            sourceType: 'module',
+            parserOptions:
+                typescript !== undefined && typescript
+                    ? {
+                          parser: await import('@typescript-eslint/parser').then((m) =>
+                              hasOwnProperty(m, 'default') ? m.default : m
+                          ),
+                          sourceType: 'module'
+                      }
+                    : undefined
         },
         plugins: {
             vue: plugin
