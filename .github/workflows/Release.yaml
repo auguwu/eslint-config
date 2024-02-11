@@ -24,6 +24,8 @@ on:
     release:
         types:
             - published
+permissions:
+    id-token: write
 jobs:
     release:
         name: Release a new version
@@ -46,3 +48,4 @@ jobs:
               with:
                   token: ${{ secrets.NPM_TOKEN }}
                   access: public
+                  provenance: true

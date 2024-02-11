@@ -22,9 +22,7 @@
  */
 
 import { defineConfig } from 'tsup';
-import { resolve } from 'path';
 
-// tsup --clean --format cjs src/index.ts && tsup --dts --format esm src/index.ts && mv dist/index.d.mts dist/index.d.ts
 export default defineConfig({
     cjsInterop: true,
     sourcemap: true,
@@ -34,6 +32,9 @@ export default defineConfig({
     dts: true,
     banner: {
         js: [
+            '/* eslint-ignore */',
+            '// prettier-ignore',
+            '',
             '/*',
             ' * 📜 @augu/eslint-config: Shareable ESLint configuration for my projects',
             ' * Copyright (c) 2019-2024 Noel <cutie@floofy.dev>',
@@ -55,7 +56,8 @@ export default defineConfig({
             ' * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,',
             ' * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE',
             ' * SOFTWARE.',
-            ' */'
+            ' */',
+            ''
         ].join('\n')
     }
 });
