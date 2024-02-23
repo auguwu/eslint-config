@@ -64,7 +64,7 @@
     },
     "devDependencies": {
         "@augu/tsconfig": "1.2.0",
-        "@types/bun": "1.0.6",
+        "@types/bun": "1.0.7",
         "@types/eslint": "8.56.3",
         "@types/node": "20.11.19",
         "astro-eslint-parser": "0.16.3",
