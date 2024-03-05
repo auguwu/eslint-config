@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty, isObject } from '@noelware/utils';
+import { hasOwnProperty, assertIsError, isObject } from '@noelware/utils';
 import type { Linter } from 'eslint';
 import { existsSync } from 'fs';
 import { resolve } from 'path';
@@ -192,22 +192,36 @@ export default async function typescript(configOrOpts?: Options | string) {
         enableTypeAwareRules = false;
     }
 
-    const [parser, plugin] = await Promise.all([
-        import('@typescript-eslint/parser').then((m) => (hasOwnProperty(m, 'default') ? m.default : m)),
-        import('@typescript-eslint/eslint-plugin').then((m) => (hasOwnProperty(m, 'default') ? m.default : m))
-    ] as const);
+    let parser: any, plugin: any;
+    try {
+        // First, let's see if we have `typescript-eslint` installed, which was introduced in TS ESLint v7
+        const { parser: _parser, plugin: _plugin } = await import('typescript-eslint').then((m) => ({
+            parser: m.parser,
+            plugin: m.plugin
+        }));
+
+        parser = _parser;
+        plugin = _plugin;
+    } catch (ex) {
+        assertIsError(ex);
+
+        parser = await import('@typescript-eslint/parser').then((m) => (hasOwnProperty(m, 'default') ? m.default : m));
+        plugin = await import('@typescript-eslint/eslint-plugin').then((m) =>
+            hasOwnProperty(m, 'default') ? m.default : m
+        );
+    }
 
     return {
         files: paths,
         languageOptions: {
-            parser: parser as any,
+            parser,
             sourceType: 'module',
             parserOptions: tsconfig.length ? { project: tsconfig, tsconfigRootDir: rootDir } : {}
         },
         plugins: {
             // for prettier since `eslint-config-prettier` looks up rules via @typescript-eslint
-            '@typescript-eslint': plugin as any,
-            ts: plugin as any
+            '@typescript-eslint': plugin,
+            ts: plugin
         },
         rules: {
             ...RULES,

@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty } from '@noelware/utils';
+import { hasOwnProperty, assertIsError } from '@noelware/utils';
 import type { Linter } from 'eslint';
 
 /** Options for the Vue configuration for `@augu/eslint-config`. */
@@ -33,26 +33,41 @@ export interface Options {
     typescript?: boolean;
 }
 
-export default async function vue({ typescript }: Options = {}): Promise<Linter.FlatConfig> {
+export default async function vue(opts: Options = {}): Promise<Linter.FlatConfig> {
     const [parser, plugin] = await Promise.all([
         import('vue-eslint-parser').then((m) => (hasOwnProperty(m, 'default') ? m.default : m)),
         import('eslint-plugin-vue').then((m) => (hasOwnProperty(m, 'default') ? m.default : m))
     ]);
+
+    let typescript = hasOwnProperty(opts, 'typescript') ? opts.typescript : false;
+    let tsParser: any;
+
+    try {
+        await import('@typescript-eslint/parser').then((m) => {
+            tsParser = hasOwnProperty(m, 'default') ? m.default : m;
+            typescript = true;
+        });
+
+        if (!typescript) {
+            await import('typescript-eslint').then((m) => {
+                tsParser = m.parser;
+                typescript = true;
+            });
+        }
+    } catch (ex) {
+        assertIsError(ex);
+        typescript = false;
+    }
 
     return {
         ignores: ['index.html'],
         languageOptions: {
             parser: parser as any,
             sourceType: 'module',
-            parserOptions:
-                typescript !== undefined && typescript
-                    ? {
-                          parser: await import('@typescript-eslint/parser').then((m) =>
-                              hasOwnProperty(m, 'default') ? m.default : m
-                          ),
-                          sourceType: 'module'
-                      }
-                    : undefined
+            parserOptions: {
+                type: 'module',
+                parser: typescript ? tsParser : undefined
+            }
         },
         plugins: {
             vue: plugin

@@ -32,7 +32,7 @@ export default defineConfig({
     dts: true,
     banner: {
         js: [
-            '/* eslint-ignore */',
+            '/* eslint-disable */',
             '// prettier-ignore',
             '',
             '/*',

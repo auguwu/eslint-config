@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty } from '@noelware/utils';
+import { hasOwnProperty, assertIsError } from '@noelware/utils';
 import type { Linter } from 'eslint';
 
 /** Options for the Astro configuration for `@augu/eslint-config`. */
@@ -33,7 +33,7 @@ export interface Options {
     typescript?: boolean;
 }
 
-export default async function astro({ typescript }: Options = {}): Promise<Linter.FlatConfig> {
+export default async function astro(opts: Options = {}): Promise<Linter.FlatConfig> {
     const [plugin, parser] = await Promise.all([
         await import('eslint-plugin-astro'),
         await import('astro-eslint-parser')
@@ -42,20 +42,35 @@ export default async function astro({ typescript }: Options = {}): Promise<Linte
         hasOwnProperty(parser, 'default') ? parser.default : parser
     ]);
 
+    let typescript = hasOwnProperty(opts, 'typescript') ? opts.typescript : false;
+    let tsParser: any;
+
+    try {
+        await import('@typescript-eslint/parser').then((m) => {
+            tsParser = hasOwnProperty(m, 'default') ? m.default : m;
+            typescript = true;
+        });
+
+        if (!typescript) {
+            await import('typescript-eslint').then((m) => {
+                tsParser = m.parser;
+                typescript = true;
+            });
+        }
+    } catch (ex) {
+        assertIsError(ex);
+        typescript = false;
+    }
+
     return {
         files: ['**/*.astro'],
         languageOptions: {
             parser: parser as any,
             sourceType: 'module',
-            parserOptions:
-                typescript !== undefined && typescript
-                    ? {
-                          parser: await import('@typescript-eslint/parser').then((m) =>
-                              hasOwnProperty(m, 'default') ? m.default : m
-                          ),
-                          sourceType: 'module'
-                      }
-                    : undefined
+            parserOptions: {
+                type: 'module',
+                parser: typescript ? tsParser : undefined
+            }
         },
         plugins: {
             astro: plugin as any
