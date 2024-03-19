@@ -68,7 +68,7 @@
     "devDependencies": {
         "@augu/tsconfig": "1.2.0",
         "@types/bun": "1.0.8",
-        "@types/eslint": "8.56.5",
+        "@types/eslint": "8.56.6",
         "@types/node": "20.11.29",
         "astro-eslint-parser": "0.16.3",
         "colorette": "2.0.20",
