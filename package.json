@@ -80,7 +80,7 @@
         "eslint-plugin-vue": "9.24.1",
         "prettier": "3.2.5",
         "tsup": "8.0.2",
-        "typescript": "5.4.4",
+        "typescript": "5.4.5",
         "typescript-eslint": "7.6.0"
     }
 }
