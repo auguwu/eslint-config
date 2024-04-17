@@ -1,9 +1,10 @@
 {
     "name": "@augu/eslint-config",
     "description": "📜 @augu/eslint-config is Noel's shared configuration for his projects and for Noelware as well",
-    "version": "5.2.0",
+    "version": "5.2.1",
     "license": "MIT",
     "author": "Noel <cutie@floofy.dev>",
+    "type": "module",
     "repository": "https://github.com/auguwu/eslint-config",
     "main": "dist/index.cjs",
     "module": "dist/index.js",
@@ -20,7 +21,7 @@
         }
     },
     "scripts": {
-        "build": "tsup-node ./src/index.ts && rm dist/index.d.mts",
+        "build": "tsup-node ./src/index.ts",
         "lint": "bun run scripts/eslint.ts",
         "fmt": "bun run scripts/prettier.ts"
     },
@@ -32,9 +33,6 @@
             "optional": true
         },
         "eslint-config-prettier": {
-            "optional": true
-        },
-        "eslint-plugin-antfu": {
             "optional": true
         },
         "eslint-plugin-perfectionist": {
@@ -59,8 +57,7 @@
     "dependencies": {
         "@actions/core": "1.10.1",
         "@noelware/utils": "2.5.0",
-        "@typescript-eslint/eslint-plugin": "7.7.0",
-        "@typescript-eslint/parser": "7.7.0",
+        "debug": "4.3.4",
         "defu": "6.1.4",
         "local-pkg": "0.5.0",
         "vue-eslint-parser": "9.4.2"
@@ -68,6 +65,7 @@
     "devDependencies": {
         "@augu/tsconfig": "1.2.0",
         "@types/bun": "1.1.0",
+        "@types/debug": "4.1.12",
         "@types/eslint": "8.56.9",
         "@types/node": "20.12.7",
         "astro-eslint-parser": "0.17.0",

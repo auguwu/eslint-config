@@ -23,6 +23,9 @@
 
 import { hasOwnProperty, assertIsError } from '@noelware/utils';
 import type { Linter } from 'eslint';
+import debug_ from 'debug';
+
+const debug = debug_('noel/eslint-config:vue');
 
 /** Options for the Vue configuration for `@augu/eslint-config`. */
 export interface Options {
@@ -43,18 +46,22 @@ export default async function vue(opts: Options = {}): Promise<Linter.FlatConfig
     let tsParser: any;
 
     try {
+        debug('loading TypeScript for ESLint packages...');
         await import('@typescript-eslint/parser').then((m) => {
             tsParser = hasOwnProperty(m, 'default') ? m.default : m;
             typescript = true;
         });
 
         if (!typescript) {
+            debug('...unable to find `@typescript-eslint/parser`, trying `typescript-eslint`');
             await import('typescript-eslint').then((m) => {
                 tsParser = m.parser;
                 typescript = true;
             });
         }
     } catch (ex) {
+        debug('failed to find TypeScript for ESLint packages, disabling TypeScript support: %o', ex);
+
         assertIsError(ex);
         typescript = false;
     }

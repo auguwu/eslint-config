@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty, tryRequire, type Lazy, isObject, lazy } from '@noelware/utils';
+import { hasOwnProperty, type Lazy, isObject, lazy } from '@noelware/utils';
 import astroConfig, { type Options as AstroOptions } from './configs/astro';
 import vueConfig, { type Options as VueOptions } from './configs/vue';
 import ts, { type Options as TsOptions } from './configs/typescript';
@@ -29,6 +29,7 @@ import perfectionistConfig from './configs/perfectionist';
 import javascript from './configs/javascript';
 import { resolveModule } from 'local-pkg';
 import type { Linter } from 'eslint';
+import debug_ from 'debug';
 import defu from 'defu';
 
 // export option types because why not
@@ -37,12 +38,13 @@ export type { AstroOptions, TsOptions, VueOptions };
 // export them as singular
 export { astroConfig as astro, javascript, perfectionistConfig as perfectionist, ts as typescript, vueConfig as vue };
 
+const debug = debug_('noel/eslint-config');
 const createLazilyResolver = (module: string): Lazy<boolean> =>
     lazy(() => {
         // CJS `require`
         if (typeof require !== 'undefined') {
             try {
-                tryRequire(module);
+                require(module);
                 return true;
             } catch {
                 return false;
@@ -108,6 +110,7 @@ export interface Options {
  * @param others Other {@link Linter.FlatConfig `FlatConfig`} configurations to use.
  */
 export default async function noel(opts: Options = {}, ...others: Linter.FlatConfig[]) {
+    debug('eslint-config: init');
     const { perfectionist, typescript, astro, vue } = defu<Options, [Options]>(opts, {
         perfectionist: isPerfectionistPluginAvailable.get(),
         typescript: isTsAvailable.get(),
@@ -158,5 +161,6 @@ export default async function noel(opts: Options = {}, ...others: Linter.FlatCon
         configs.push(config);
     }
 
+    debug('init: finished');
     return configs.concat(...others);
 }

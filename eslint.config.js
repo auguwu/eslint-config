@@ -21,6 +21,9 @@
  * SOFTWARE.
  */
 
-const { default: noel } = require('./dist/index.js');
+import noel from './dist/index.js';
 
-module.exports = noel();
+export default noel({
+    astro: false,
+    vue: false
+});

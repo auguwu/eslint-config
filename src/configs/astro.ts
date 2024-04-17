@@ -23,6 +23,9 @@
 
 import { hasOwnProperty, assertIsError } from '@noelware/utils';
 import type { Linter } from 'eslint';
+import debug_ from 'debug';
+
+const debug = debug_('noel/eslint-config:astro');
 
 /** Options for the Astro configuration for `@augu/eslint-config`. */
 export interface Options {
@@ -34,6 +37,7 @@ export interface Options {
 }
 
 export default async function astro(opts: Options = {}): Promise<Linter.FlatConfig> {
+    debug('checking if `eslint-plugin-astro` and `astro-eslint-parser` are installed');
     const [plugin, parser] = await Promise.all([
         await import('eslint-plugin-astro'),
         await import('astro-eslint-parser')
@@ -46,18 +50,22 @@ export default async function astro(opts: Options = {}): Promise<Linter.FlatConf
     let tsParser: any;
 
     try {
+        debug('loading TypeScript for ESLint packages...');
         await import('@typescript-eslint/parser').then((m) => {
             tsParser = hasOwnProperty(m, 'default') ? m.default : m;
             typescript = true;
         });
 
         if (!typescript) {
+            debug('...unable to find `@typescript-eslint/parser`, trying `typescript-eslint`');
             await import('typescript-eslint').then((m) => {
                 tsParser = m.parser;
                 typescript = true;
             });
         }
     } catch (ex) {
+        debug('failed to find TypeScript for ESLint packages, disabling TypeScript support: %o', ex);
+
         assertIsError(ex);
         typescript = false;
     }

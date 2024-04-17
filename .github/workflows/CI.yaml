@@ -76,3 +76,5 @@ jobs:
 
             - name: Check ESLint
               run: bun run scripts/eslint.ts
+              env:
+                  DEBUG: 'noel/*'

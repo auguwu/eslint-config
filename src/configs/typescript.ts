@@ -21,11 +21,13 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty, assertIsError, isObject } from '@noelware/utils';
+import { hasOwnProperty, isObject } from '@noelware/utils';
 import type { Linter } from 'eslint';
 import { existsSync } from 'fs';
 import { resolve } from 'path';
+import debug_ from 'debug';
 
+const debug = debug_('noel/eslint-config:typescript');
 const RULES: NonNullable<Linter.FlatConfig['rules']> = {
     // https://typescript-eslint.io/rules/adjacent-overload-signatures
     'ts/adjacent-overload-signatures': 'warn',
@@ -192,6 +194,7 @@ export default async function typescript(configOrOpts?: Options | string) {
         enableTypeAwareRules = false;
     }
 
+    debug('checking if we have TypeScript for ESLint packages');
     let parser: any, plugin: any;
     try {
         // First, let's see if we have `typescript-eslint` installed, which was introduced in TS ESLint v7
@@ -202,8 +205,16 @@ export default async function typescript(configOrOpts?: Options | string) {
 
         parser = _parser;
         plugin = _plugin;
+
+        debug('...loaded from `typescript-eslint` package');
     } catch (ex) {
-        assertIsError(ex);
+        if (!(ex instanceof Error) || (typeof ex === 'string' && !(ex as string).includes('Cannot find package'))) {
+            throw new Error(`unable to classify error as \`Error\`: ${ex}`);
+        }
+
+        debug(
+            '...unable to find `typescript-eslint`, trying from scoped packages (@typescript-eslint/{parser,eslint-plugin}'
+        );
 
         parser = await import('@typescript-eslint/parser').then((m) => (hasOwnProperty(m, 'default') ? m.default : m));
         plugin = await import('@typescript-eslint/eslint-plugin').then((m) =>
