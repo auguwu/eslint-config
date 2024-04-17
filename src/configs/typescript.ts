@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty, isObject } from '@noelware/utils';
+import { assertIsError, hasOwnProperty, isObject } from '@noelware/utils';
 import type { Linter } from 'eslint';
 import { existsSync } from 'fs';
 import { resolve } from 'path';
@@ -208,10 +208,7 @@ export default async function typescript(configOrOpts?: Options | string) {
 
         debug('...loaded from `typescript-eslint` package');
     } catch (ex) {
-        if (!(ex instanceof Error) || (typeof ex === 'string' && !(ex as string).includes('Cannot find package'))) {
-            throw new Error(`unable to classify error as \`Error\`: ${ex}`);
-        }
-
+        assertIsError(ex);
         debug(
             '...unable to find `typescript-eslint`, trying from scoped packages (@typescript-eslint/{parser,eslint-plugin}'
         );
