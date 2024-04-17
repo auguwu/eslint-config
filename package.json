@@ -1,7 +1,7 @@
 {
     "name": "@augu/eslint-config",
     "description": "📜 @augu/eslint-config is Noel's shared configuration for his projects and for Noelware as well",
-    "version": "5.2.1",
+    "version": "5.2.2",
     "license": "MIT",
     "author": "Noel <cutie@floofy.dev>",
     "type": "module",
@@ -56,7 +56,7 @@
     },
     "dependencies": {
         "@actions/core": "1.10.1",
-        "@noelware/utils": "2.5.0",
+        "@noelware/utils": "2.5.1",
         "debug": "4.3.4",
         "defu": "6.1.4",
         "local-pkg": "0.5.0",

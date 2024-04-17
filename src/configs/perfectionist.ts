@@ -38,7 +38,7 @@ export default async function perfectionist(): Promise<Linter.FlatConfig> {
             'perfectionist/sort-astro-attributes': ['error', { type: 'natural' }],
             'perfectionist/sort-classes': 'off',
             'perfectionist/sort-enums': ['error', { type: 'natural' }],
-            'perfectionist/sort-exports': ['error', { type: 'natural' }],
+            //'perfectionist/sort-exports': ['error', { type: 'natural' }],
             'perfectionist/sort-imports': [
                 'error',
                 {
