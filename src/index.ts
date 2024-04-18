@@ -39,7 +39,7 @@ export type { AstroOptions, TsOptions, VueOptions };
 export { astroConfig as astro, javascript, perfectionistConfig as perfectionist, ts as typescript, vueConfig as vue };
 
 const debug = debug_('noel/eslint-config');
-const isModuleAvaliable = lazy((module: string) => {
+const isModuleAvaliable = (module: string) => {
     // CJS `require`
     if (typeof require !== 'undefined') {
         try {
@@ -52,13 +52,13 @@ const isModuleAvaliable = lazy((module: string) => {
 
     // fallback to looking via fs
     return !!resolveModule(module);
-});
+};
 
-const perfectionistAvaliable = isModuleAvaliable.get('eslint-plugin-perfectionist');
-const prettierAvaliable = isModuleAvaliable.get('prettier') || isModuleAvaliable.get('eslint-config-prettier');
-const astroAvaliable = isModuleAvaliable.get('eslint-plugin-astro');
-const vueAvaliable = isModuleAvaliable.get('vue');
-const tsAvaliable = isModuleAvaliable.get('typescript');
+const perfectionistAvaliable = isModuleAvaliable('eslint-plugin-perfectionist');
+const prettierAvaliable = isModuleAvaliable('prettier') || isModuleAvaliable('eslint-config-prettier');
+const astroAvaliable = isModuleAvaliable('eslint-plugin-astro');
+const vueAvaliable = isModuleAvaliable('vue');
+const tsAvaliable = isModuleAvaliable('typescript');
 
 export interface Options {
     /**
