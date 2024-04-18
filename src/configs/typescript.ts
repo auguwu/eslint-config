@@ -208,10 +208,18 @@ export default async function typescript(configOrOpts?: Options | string) {
 
         debug('...loaded from `typescript-eslint` package');
     } catch (ex) {
-        assertIsError(ex);
+        // if we are not using Bun, then the `assertIsError` should do something since
+        // Bun or ESLint throws a `ResolveMessage` and it's an object but cannot be looked
+        // into.
+        if (typeof Bun === 'undefined') {
+            assertIsError(ex);
+        }
+
         debug(
             '...unable to find `typescript-eslint`, trying from scoped packages (@typescript-eslint/{parser,eslint-plugin}'
         );
+
+        debug('received error: %o', ex);
 
         parser = await import('@typescript-eslint/parser').then((m) => (hasOwnProperty(m, 'default') ? m.default : m));
         plugin = await import('@typescript-eslint/eslint-plugin').then((m) =>

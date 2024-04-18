@@ -39,27 +39,26 @@ export type { AstroOptions, TsOptions, VueOptions };
 export { astroConfig as astro, javascript, perfectionistConfig as perfectionist, ts as typescript, vueConfig as vue };
 
 const debug = debug_('noel/eslint-config');
-const createLazilyResolver = (module: string): Lazy<boolean> =>
-    lazy(() => {
-        // CJS `require`
-        if (typeof require !== 'undefined') {
-            try {
-                require(module);
-                return true;
-            } catch {
-                return false;
-            }
+const isModuleAvaliable = lazy((module: string) => {
+    // CJS `require`
+    if (typeof require !== 'undefined') {
+        try {
+            require(module);
+            return true;
+        } catch {
+            return false;
         }
+    }
 
-        // fallback to looking via fs
-        return !!resolveModule(module);
-    });
+    // fallback to looking via fs
+    return !!resolveModule(module);
+});
 
-const isPerfectionistPluginAvailable = createLazilyResolver('eslint-plugin-perfectionist');
-const isPrettierAvailable = createLazilyResolver('prettier');
-const isAstroAvailable = createLazilyResolver('eslint-plugin-astro');
-const isVueAvailable = createLazilyResolver('vue');
-const isTsAvailable = createLazilyResolver('typescript');
+const perfectionistAvaliable = isModuleAvaliable.get('eslint-plugin-perfectionist');
+const prettierAvaliable = isModuleAvaliable.get('prettier') || isModuleAvaliable.get('eslint-config-prettier');
+const astroAvaliable = isModuleAvaliable.get('eslint-plugin-astro');
+const vueAvaliable = isModuleAvaliable.get('vue');
+const tsAvaliable = isModuleAvaliable.get('typescript');
 
 export interface Options {
     /**
@@ -112,10 +111,10 @@ export interface Options {
 export default async function noel(opts: Options = {}, ...others: Linter.FlatConfig[]) {
     debug('eslint-config: init');
     const { perfectionist, typescript, astro, vue } = defu<Options, [Options]>(opts, {
-        perfectionist: isPerfectionistPluginAvailable.get(),
-        typescript: isTsAvailable.get(),
-        astro: isAstroAvailable.get(),
-        vue: isVueAvailable.get()
+        perfectionist: perfectionistAvaliable,
+        typescript: tsAvaliable,
+        astro: astroAvaliable,
+        vue: vueAvaliable
     });
 
     const configs = [javascript()];
@@ -153,7 +152,7 @@ export default async function noel(opts: Options = {}, ...others: Linter.FlatCon
         }
     }
 
-    if (isPrettierAvailable.get()) {
+    if (prettierAvaliable) {
         const config = await import('eslint-config-prettier').then((m) =>
             hasOwnProperty(m, 'default') ? m.default : m
         );

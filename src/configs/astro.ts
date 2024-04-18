@@ -66,7 +66,7 @@ export default async function astro(opts: Options = {}): Promise<Linter.FlatConf
     } catch (ex) {
         debug('failed to find TypeScript for ESLint packages, disabling TypeScript support: %o', ex);
 
-        assertIsError(ex);
+        typeof Bun === 'undefined' && assertIsError(ex);
         typescript = false;
     }
 
