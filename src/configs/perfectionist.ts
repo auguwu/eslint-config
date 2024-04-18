@@ -38,7 +38,6 @@ export default async function perfectionist(): Promise<Linter.FlatConfig> {
             'perfectionist/sort-astro-attributes': ['error', { type: 'natural' }],
             'perfectionist/sort-classes': 'off',
             'perfectionist/sort-enums': ['error', { type: 'natural' }],
-            //'perfectionist/sort-exports': ['error', { type: 'natural' }],
             'perfectionist/sort-imports': [
                 'error',
                 {
@@ -51,8 +50,6 @@ export default async function perfectionist(): Promise<Linter.FlatConfig> {
             'perfectionist/sort-interfaces': 'off',
             'perfectionist/sort-jsx-props': ['error', { type: 'line-length' }],
             'perfectionist/sort-maps': 'off',
-            'perfectionist/sort-named-exports': ['error', { type: 'natural' }],
-            'perfectionist/sort-named-imports': ['error', { type: 'line-length', order: 'desc' }],
             'perfectionist/sort-object-types': ['error', { type: 'natural' }],
             'perfectionist/sort-objects': 'off',
             'perfectionist/sort-svelte-attributes': ['error', { type: 'line-length' }],
