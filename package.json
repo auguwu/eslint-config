@@ -64,7 +64,7 @@
     },
     "devDependencies": {
         "@augu/tsconfig": "1.2.0",
-        "@types/bun": "1.1.0",
+        "@types/bun": "1.1.1",
         "@types/debug": "4.1.12",
         "@types/eslint": "8.56.10",
         "@types/node": "20.12.7",
