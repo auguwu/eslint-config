@@ -66,7 +66,7 @@
         "@augu/tsconfig": "1.2.0",
         "@types/bun": "1.1.6",
         "@types/debug": "4.1.12",
-        "@types/eslint": "8.56.11",
+        "@types/eslint": "9.6.0",
         "@types/node": "20.14.15",
         "astro-eslint-parser": "1.0.2",
         "colorette": "2.0.20",
