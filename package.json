@@ -77,7 +77,7 @@
         "eslint-plugin-perfectionist": "2.11.0",
         "eslint-plugin-vue": "9.28.0",
         "prettier": "3.3.3",
-        "tsup": "8.2.4",
+        "tsup": "8.3.0",
         "typescript": "5.6.2",
         "typescript-eslint": "7.18.0"
     }
