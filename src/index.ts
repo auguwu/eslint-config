@@ -26,9 +26,9 @@ import vueConfig, { type Options as VueOptions } from './configs/vue';
 import ts, { type Options as TsOptions } from './configs/typescript';
 import { hasOwnProperty, isObject } from '@noelware/utils';
 import { resolveModule } from 'local-pkg';
+import stylisticConfig from './configs/stylistic';
 import type { Linter } from 'eslint';
 import javascript from './configs/javascript';
-import stylistic from './configs/stylistic';
 import debug_ from 'debug';
 import defu from 'defu';
 
@@ -36,7 +36,7 @@ import defu from 'defu';
 export type { AstroOptions, TsOptions, VueOptions };
 
 // export them as singular
-export { astroConfig as astro, javascript, ts as typescript, vueConfig as vue, stylistic };
+export { astroConfig as astro, javascript, ts as typescript, vueConfig as vue, stylisticConfig as stylistic };
 
 const debug = debug_('noel/eslint-config');
 const isModuleAvaliable = (module: string) => {
@@ -147,6 +147,7 @@ export default async function noel(opts: Options = {}, ...others: Linter.Config[
     }
 
     if (stylistic !== undefined && stylistic === true) {
+        configs.push(await stylisticConfig());
     }
 
     if (prettierAvaliable) {
@@ -158,5 +159,8 @@ export default async function noel(opts: Options = {}, ...others: Linter.Config[
     }
 
     debug('init: finished');
-    return configs.concat(...others);
+    const all = configs.concat(...others);
+
+    debug(`init: loaded eslint configurations:\n${all.map(({ name }) => `\n\t- ${name || '<unknown>'}`)}`);
+    return all;
 }
