@@ -161,6 +161,6 @@ export default async function noel(opts: Options = {}, ...others: Linter.Config[
     debug('init: finished');
     const all = configs.concat(...others);
 
-    debug(`init: loaded eslint configurations:\n${all.map(({ name }) => `\n\t- ${name || '<unknown>'}`)}`);
+    debug(`init: loaded eslint configurations:\n${all.map(({ name }) => `\n\t- ${name || '<unknown>'}`).join('')}`);
     return all;
 }

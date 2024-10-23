@@ -28,6 +28,7 @@ import type { Linter } from 'eslint';
  */
 export default function javascript(): Linter.Config {
     return {
+        name: 'noel/eslint-config:js',
         files: ['**/*.js'],
         languageOptions: {
             ecmaVersion: 'latest',

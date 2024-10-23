@@ -31,7 +31,7 @@ export default async function stylistic(): Promise<Linter.Config> {
     const plugin = await import('@stylistic/eslint-plugin').then((m) => m.default);
 
     return {
-        name: 'noel/eslint-config:stylistic:js',
+        name: 'noel/eslint-config:stylistic',
         files: ['**/*.js'],
         plugins: {
             stylistic: plugin
