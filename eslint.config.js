@@ -21,9 +21,15 @@
  * SOFTWARE.
  */
 
+import { fileURLToPath } from 'node:url';
 import noel from './dist/index.js';
 
 export default noel({
+    stylistic: true,
+    typescript: {
+        tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url))
+    },
+
     astro: false,
     vue: false
 });

@@ -36,7 +36,7 @@ export interface Options {
     typescript?: boolean;
 }
 
-export default async function vue(opts: Options = {}): Promise<Linter.FlatConfig> {
+export default async function vue(opts: Options = {}): Promise<Linter.Config> {
     const [parser, plugin] = await Promise.all([
         import('vue-eslint-parser').then((m) => (hasOwnProperty(m, 'default') ? m.default : m)),
         import('eslint-plugin-vue').then((m) => (hasOwnProperty(m, 'default') ? m.default : m))
@@ -67,6 +67,7 @@ export default async function vue(opts: Options = {}): Promise<Linter.FlatConfig
     }
 
     return {
+        name: 'noel/eslint-config:vue',
         ignores: ['index.html'],
         languageOptions: {
             parser: parser as any,
@@ -89,5 +90,5 @@ export default async function vue(opts: Options = {}): Promise<Linter.FlatConfig
             'vue/html-self-closing': 'off',
             'vue/html-indent': ['error', 4]
         }
-    } satisfies Linter.FlatConfig;
+    } satisfies Linter.Config;
 }

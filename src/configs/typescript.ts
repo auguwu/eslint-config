@@ -28,7 +28,7 @@ import { resolve } from 'path';
 import debug_ from 'debug';
 
 const debug = debug_('noel/eslint-config:typescript');
-const RULES: NonNullable<Linter.FlatConfig['rules']> = {
+const RULES: NonNullable<Linter.Config['rules']> = {
     // https://typescript-eslint.io/rules/adjacent-overload-signatures
     'ts/adjacent-overload-signatures': 'warn',
 
@@ -43,23 +43,6 @@ const RULES: NonNullable<Linter.FlatConfig['rules']> = {
         }
     ],
 
-    // https://typescript-eslint.io/rules/type-annotation-spacing
-    'ts/type-annotation-spacing': [
-        'error',
-        {
-            // enforces 'const a: string' and not 'const a : string'
-            before: false,
-            after: true,
-            overrides: {
-                // enforces 'const a: () => string = () => "woof"'
-                arrow: {
-                    before: true,
-                    after: true
-                }
-            }
-        }
-    ],
-
     // https://typescript-eslint.io/rules/no-extra-non-null-assertion
     'ts/no-extra-non-null-assertion': 'error',
 
@@ -69,8 +52,17 @@ const RULES: NonNullable<Linter.FlatConfig['rules']> = {
     // https://typescript-eslint.io/rules/no-array-constructor
     'ts/no-array-constructor': 'error',
 
-    // https://typescript-eslint.io/rules/no-empty-interface
-    'ts/no-empty-interface': ['warn', { allowSingleExtends: true }],
+    // https://typescript-eslint.io/rules/no-empty-object-type
+    'ts/no-empty-object-type': [
+        'warn',
+        {
+            // only allow empty interfaces with `extends ... {}`
+            allowInterfaces: 'with-single-extends',
+
+            // Never allow literal object types
+            allowObjectTypes: 'never'
+        }
+    ],
 
     // https://typescript-eslint.io/rules/no-empty-function
     'ts/no-empty-function': 'error',
@@ -78,29 +70,14 @@ const RULES: NonNullable<Linter.FlatConfig['rules']> = {
     // https://typescript-eslint.io/rules/prefer-as-const
     'ts/prefer-as-const': 'error',
 
-    // https://typescript-eslint.io/rules/space-infix-ops
-    'ts/space-infix-ops': 'error',
-
-    // https://typescript-eslint.io/rules/no-extra-semi
-    'ts/no-extra-semi': 'error',
-
     // https://typescript-eslint.io/rules/no-this-alias
     'ts/no-this-alias': ['error', { allowDestructuring: true }],
 
     // https://typescript-eslint.io/rules/no-namespace
     'ts/no-namespace': ['error', { allowDeclarations: true }],
 
-    // https://typescript-eslint.io/rules/brace-style
-    'ts/brace-style': ['error', '1tbs'],
-
     // https://typescript-eslint.io/rules/array-type
     'ts/array-type': ['error', { default: 'array-simple' }],
-
-    // https://typescript-eslint.io/rules/ban-types
-    'ts/ban-types': 'warn',
-
-    // https://typescript-eslint.io/rules/indent
-    'ts/indent': 'off',
 
     // disable it in the default config since TS ESLint overrides it
     'no-useless-constructor': 'off',
@@ -108,10 +85,7 @@ const RULES: NonNullable<Linter.FlatConfig['rules']> = {
     'brace-style': 'off'
 };
 
-const TYPE_AWARE_RULES: NonNullable<Linter.FlatConfig['rules']> = {
-    // https://typescript-eslint.io/rules/no-throw-literal
-    'ts/no-throw-literal': 'error',
-
+const TYPE_AWARE_RULES: NonNullable<Linter.Config['rules']> = {
     // https://typescript-eslint.io/rules/dot-notation
     'ts/dot-notation': [
         'error',
@@ -228,6 +202,7 @@ export default async function typescript(configOrOpts?: Options | string) {
     }
 
     return {
+        name: 'noel/eslint-config:typescript',
         files: paths,
         languageOptions: {
             parser,
@@ -243,5 +218,5 @@ export default async function typescript(configOrOpts?: Options | string) {
             ...RULES,
             ...(enableTypeAwareRules ? TYPE_AWARE_RULES : {})
         }
-    } satisfies Linter.FlatConfig;
+    } satisfies Linter.Config;
 }

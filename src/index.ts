@@ -21,14 +21,14 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty, type Lazy, isObject, lazy } from '@noelware/utils';
 import astroConfig, { type Options as AstroOptions } from './configs/astro';
 import vueConfig, { type Options as VueOptions } from './configs/vue';
 import ts, { type Options as TsOptions } from './configs/typescript';
-import perfectionistConfig from './configs/perfectionist';
-import javascript from './configs/javascript';
+import { hasOwnProperty, isObject } from '@noelware/utils';
 import { resolveModule } from 'local-pkg';
 import type { Linter } from 'eslint';
+import javascript from './configs/javascript';
+import stylistic from './configs/stylistic';
 import debug_ from 'debug';
 import defu from 'defu';
 
@@ -36,7 +36,7 @@ import defu from 'defu';
 export type { AstroOptions, TsOptions, VueOptions };
 
 // export them as singular
-export { astroConfig as astro, javascript, perfectionistConfig as perfectionist, ts as typescript, vueConfig as vue };
+export { astroConfig as astro, javascript, ts as typescript, vueConfig as vue, stylistic };
 
 const debug = debug_('noel/eslint-config');
 const isModuleAvaliable = (module: string) => {
@@ -54,13 +54,20 @@ const isModuleAvaliable = (module: string) => {
     return !!resolveModule(module);
 };
 
-const perfectionistAvaliable = isModuleAvaliable('eslint-plugin-perfectionist');
+const stylisticAvaliable = isModuleAvaliable('@stylistic/eslint-plugin');
 const prettierAvaliable = isModuleAvaliable('prettier') || isModuleAvaliable('eslint-config-prettier');
 const astroAvaliable = isModuleAvaliable('eslint-plugin-astro');
 const vueAvaliable = isModuleAvaliable('vue');
 const tsAvaliable = isModuleAvaliable('typescript');
 
 export interface Options {
+    /**
+     * Enables style-based rules for both JavaScript or TypeScript.
+     *
+     * You will need `@stylistic/eslint-plugin` installed.
+     */
+    stylistic?: boolean;
+
     /**
      * Configures the TypeScript side. This can be:
      *
@@ -69,15 +76,6 @@ export interface Options {
      * * {@link TsOptions} object.
      */
     typescript?: TsOptions | boolean | string;
-
-    /**
-     * Enables the [`eslint-plugin-perfectionist`](https://npm.im/eslint-plugin-perfectionist) which does
-     * mainly what Noel prefers for sorting imports, enums, etc. This can be disabled if you wish
-     * to use your own perfectionist configs.
-     *
-     * @default false
-     */
-    perfectionist?: boolean;
 
     /**
      * Enables the use of linting Astro files via [`eslint-plugin-astro`]. By default, if this is `true`,
@@ -95,7 +93,7 @@ export interface Options {
 }
 
 /**
- * Defines a {@link Linter.FlatConfig `FlatConfig`} that can be used within a `eslint.config.js` file:
+ * Defines a {@link Linter.Config `Config`} that can be used within a `eslint.config.js` file:
  *
  * ```js
  * const { default: noel } = require('@augu/eslint-config');
@@ -108,10 +106,10 @@ export interface Options {
  * @param options Options object to configure other configurations.
  * @param others Other {@link Linter.FlatConfig `FlatConfig`} configurations to use.
  */
-export default async function noel(opts: Options = {}, ...others: Linter.FlatConfig[]) {
+export default async function noel(opts: Options = {}, ...others: Linter.Config[]) {
     debug('eslint-config: init');
-    const { perfectionist, typescript, astro, vue } = defu<Options, [Options]>(opts, {
-        perfectionist: perfectionistAvaliable,
+    const { typescript, astro, vue, stylistic } = defu<Options, [Options]>(opts, {
+        stylistic: stylisticAvaliable,
         typescript: tsAvaliable,
         astro: astroAvaliable,
         vue: vueAvaliable
@@ -138,10 +136,6 @@ export default async function noel(opts: Options = {}, ...others: Linter.FlatCon
         }
     }
 
-    if (perfectionist !== undefined && !!perfectionist) {
-        configs.push(await perfectionistConfig());
-    }
-
     if (astro !== undefined) {
         if (typeof astro === 'boolean' && !!astro) {
             configs.push(await astroConfig());
@@ -150,6 +144,9 @@ export default async function noel(opts: Options = {}, ...others: Linter.FlatCon
         if (isObject(astro)) {
             configs.push(await astroConfig(astro));
         }
+    }
+
+    if (stylistic !== undefined && stylistic === true) {
     }
 
     if (prettierAvaliable) {

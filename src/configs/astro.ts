@@ -36,7 +36,7 @@ export interface Options {
     typescript?: boolean;
 }
 
-export default async function astro(opts: Options = {}): Promise<Linter.FlatConfig> {
+export default async function astro(opts: Options = {}): Promise<Linter.Config> {
     debug('checking if `eslint-plugin-astro` and `astro-eslint-parser` are installed');
     const [plugin, parser] = await Promise.all([
         await import('eslint-plugin-astro'),
@@ -71,6 +71,7 @@ export default async function astro(opts: Options = {}): Promise<Linter.FlatConf
     }
 
     return {
+        name: 'noel/eslint-config:astro',
         files: ['**/*.astro'],
         languageOptions: {
             parser: parser as any,
@@ -80,6 +81,7 @@ export default async function astro(opts: Options = {}): Promise<Linter.FlatConf
                 parser: typescript ? tsParser : undefined
             }
         },
+
         plugins: {
             astro: plugin as any
         },

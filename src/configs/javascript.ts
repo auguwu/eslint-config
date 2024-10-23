@@ -26,7 +26,7 @@ import type { Linter } from 'eslint';
 /**
  * @returns flat config for JavaScript-related rules.
  */
-export default function javascript(): Linter.FlatConfig {
+export default function javascript(): Linter.Config {
     return {
         files: ['**/*.js'],
         languageOptions: {
@@ -40,9 +40,6 @@ export default function javascript(): Linter.FlatConfig {
         rules: {
             // https://eslint.org/docs/latest/rules/no-misleading-character-class
             'no-misleading-character-class': 'error',
-
-            // https://eslint.org/docs/latest/rules/no-template-curly-string
-            'no-template-curly-in-string': 'error',
 
             // https://eslint.org/docs/latest/rules/no-unexpected-multiline
             'no-unexpected-multiline': 'error',
@@ -65,20 +62,11 @@ export default function javascript(): Linter.FlatConfig {
             // https://eslint.org/docs/latest/rules/no-duplicate-imports
             'no-duplicate-imports': 'error',
 
-            // https://eslint.org/docs/latest/rules/no-floating-decimal
-            'no-floating-decimal': 'error',
-
-            // https://eslint.org/docs/latest/rules/no-trailing-spaces
-            'no-trailing-spaces': 'warn',
-
             // https://eslint.org/docs/latest/rules/no-unsafe-negation
             'no-unsafe-negation': 'error',
 
             // https://eslint.org/docs/latest/rules/default-param-last
             'default-param-last': 'error',
-
-            // https://eslint.org/docs/latest/rules/no-invalid-regex
-            'no-invalid-regexp': 'error',
 
             // https://eslint.org/docs/latest/rules/no-duplicate-case
             'no-duplicate-case': 'error',
@@ -91,12 +79,6 @@ export default function javascript(): Linter.FlatConfig {
 
             // https://eslint.org/docs/latest/rules/no-sparse-arrays
             'no-sparse-arrays': 'error',
-
-            // https://eslint.org/docs/latest/rules/space-in-parens
-            'space-in-parens': ['error', 'never'],
-
-            // https://eslint.org/docs/latest/rules/no-new-wrpapers
-            'no-new-wrappers': 'error',
 
             // https://eslint.org/docs/latest/rules/no-cond-assign
             'no-cond-assign': 'error',
@@ -121,20 +103,11 @@ export default function javascript(): Linter.FlatConfig {
             // https://eslint.org/docs/latest/rules/getter-return
             'getter-return': 'error',
 
-            // https://eslint.org/docs/latest/rules/no-extra-semi
-            'no-extra-semi': 'error',
-
             // https://eslint.org/docs/latest/rules/for-direction
             'for-direction': 'error',
 
-            // https://eslint.org/docs/latest/rules/no-arrow-spacing
-            'arrow-spacing': ['error', { before: true, after: true }],
-
             // https://eslint.org/docs/latest/rules/no-obj-calls
             'no-obj-calls': 'error',
-
-            // https://eslint.org/docs/latest/rules/no-dupe-arg
-            'no-dupe-args': 'error',
 
             // https://eslint.org/docs/latest/rules/no-dupe-keys
             'no-dupe-keys': 'error',
@@ -144,9 +117,6 @@ export default function javascript(): Linter.FlatConfig {
 
             // https://eslint.org/docs/latest/rules/no-new-func
             'no-new-func': 'error',
-
-            // https://eslint.org/docs/latest/rules/brace-style
-            'brace-style': ['error', '1tbs'],
 
             // https://eslint.org/docs/latest/rules/no-eq-null
             'no-eq-null': 'error',
@@ -159,9 +129,6 @@ export default function javascript(): Linter.FlatConfig {
 
             // https://eslint.org/docs/latest/rules/no-empty
             'no-empty': 'error',
-
-            // https://eslint.org/docs/latest/rules/eol-last
-            'eol-last': 'warn',
 
             // https://eslint.org/docs/latest/rules/no-with
             'no-with': 'error',

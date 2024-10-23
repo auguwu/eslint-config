@@ -21,40 +21,44 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty } from '@noelware/utils';
 import type { Linter } from 'eslint';
+import debug_ from 'debug';
 
-export default async function perfectionist(): Promise<Linter.FlatConfig> {
-    const plugin = await import('eslint-plugin-perfectionist').then((m) =>
-        hasOwnProperty(m, 'default') ? m.default : m
-    );
+const debug = debug_('noel/eslint-config:stylistic');
+
+export default async function stylistic(): Promise<Linter.Config> {
+    debug('checking if `@stylistic/eslint-plugin` is avaliable');
+    const plugin = await import('@stylistic/eslint-plugin').then((m) => m.default);
 
     return {
+        name: 'noel/eslint-config:stylistic:js',
+        files: ['**/*.js'],
         plugins: {
-            perfectionist: plugin
+            stylistic: plugin
         },
         rules: {
-            'perfectionist/sort-array-includes': 'off',
-            'perfectionist/sort-astro-attributes': ['error', { type: 'natural' }],
-            'perfectionist/sort-classes': 'off',
-            'perfectionist/sort-enums': ['error', { type: 'natural' }],
-            'perfectionist/sort-imports': [
+            // https://eslint.style/rules/js/no-floating-decimal
+            'stylistic/no-floating-decimal': 'error',
+
+            // https://eslint.style/rules/js/no-trailing-spaces
+            'stylistic/no-trailing-spaces': [
                 'error',
                 {
-                    type: 'line-length',
-                    order: 'desc',
-                    'newlines-between': 'never',
-                    'max-line-length': 120
+                    ignoreComments: true
                 }
             ],
-            'perfectionist/sort-interfaces': 'off',
-            'perfectionist/sort-jsx-props': ['error', { type: 'line-length' }],
-            'perfectionist/sort-maps': 'off',
-            'perfectionist/sort-object-types': ['error', { type: 'natural' }],
-            'perfectionist/sort-objects': 'off',
-            'perfectionist/sort-svelte-attributes': ['error', { type: 'line-length' }],
-            'perfectionist/sort-union-types': ['error', { type: 'natural' }],
-            'perfectionist/sort-vue-attributes': ['error', { type: 'line-length' }]
+
+            // https://eslint.style/rules/js/space-in-parens
+            'stylistic/space-in-parens': ['error', 'never'],
+
+            // https://eslint.style/rules/js/no-extra-semi
+            'stylistic/no-extra-semi': 'error',
+
+            // https://eslint.style/rules/js/brace-style
+            'stylistic/brace-style': ['error', 'stroustrup'],
+
+            // https://eslint.style/rules/js/eol-last
+            'stylistic/eol-last': ['error', 'always']
         }
-    } satisfies Linter.FlatConfig;
+    };
 }
