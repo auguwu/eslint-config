@@ -79,6 +79,6 @@
         "prettier": "3.4.1",
         "tsup": "8.3.5",
         "typescript": "5.7.2",
-        "typescript-eslint": "8.16.0"
+        "typescript-eslint": "8.17.0"
     }
 }
