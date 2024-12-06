@@ -57,7 +57,7 @@
     "dependencies": {
         "@actions/core": "1.11.1",
         "@noelware/utils": "2.5.1",
-        "debug": "4.3.7",
+        "debug": "4.4.0",
         "defu": "6.1.4",
         "local-pkg": "0.5.1",
         "vue-eslint-parser": "9.4.3"
