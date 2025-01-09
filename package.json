@@ -59,7 +59,7 @@
         "@noelware/utils": "2.5.1",
         "debug": "4.4.0",
         "defu": "6.1.4",
-        "local-pkg": "0.5.1",
+        "local-pkg": "1.0.0",
         "vue-eslint-parser": "9.4.3"
     },
     "devDependencies": {
