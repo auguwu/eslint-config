@@ -21,7 +21,8 @@
  * SOFTWARE.
  */
 
-import { hasOwnProperty, assertIsError } from '@noelware/utils';
+import { getTypeScriptESLintIfAvaliable } from '../util';
+import { hasOwnProperty } from '@noelware/utils';
 import type { Linter } from 'eslint';
 import debug_ from 'debug';
 
@@ -42,28 +43,17 @@ export default async function vue(opts: Options = {}): Promise<Linter.Config> {
         import('eslint-plugin-vue').then((m) => (hasOwnProperty(m, 'default') ? m.default : m))
     ]);
 
-    let typescript = hasOwnProperty(opts, 'typescript') ? opts.typescript : false;
     let tsParser: any;
+    let typescript = hasOwnProperty(opts, 'typescript') ? opts.typescript : false;
 
-    try {
-        debug('loading TypeScript for ESLint packages...');
-        await import('@typescript-eslint/parser').then((m) => {
-            tsParser = hasOwnProperty(m, 'default') ? m.default : m;
-            typescript = true;
-        });
-
-        if (!typescript) {
-            debug('...unable to find `@typescript-eslint/parser`, trying `typescript-eslint`');
-            await import('typescript-eslint').then((m) => {
-                tsParser = m.parser;
-                typescript = true;
-            });
+    if (typescript) {
+        const [isAvaliable, pkg] = await getTypeScriptESLintIfAvaliable();
+        if (!isAvaliable) {
+            debug('unable to load typescript-eslint from current workspace, disabling TypeScript support');
+            typescript = false;
+        } else {
+            tsParser = pkg;
         }
-    } catch (ex) {
-        debug('failed to find TypeScript for ESLint packages, disabling TypeScript support: %o', ex);
-
-        typeof Bun === 'undefined' && assertIsError(ex);
-        typescript = false;
     }
 
     return {
