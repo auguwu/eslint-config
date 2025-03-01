@@ -68,7 +68,7 @@
         "@types/bun": "1.2.4",
         "@types/debug": "4.1.12",
         "@types/eslint": "9.6.1",
-        "@types/node": "22.13.7",
+        "@types/node": "22.13.8",
         "astro-eslint-parser": "1.2.1",
         "colorette": "2.0.20",
         "eslint": "9.21.0",
