@@ -60,7 +60,7 @@
         "debug": "4.4.1",
         "defu": "6.1.4",
         "local-pkg": "1.1.1",
-        "vue-eslint-parser": "10.1.4"
+        "vue-eslint-parser": "10.2.0"
     },
     "devDependencies": {
         "@augu/tsconfig": "1.2.0",
