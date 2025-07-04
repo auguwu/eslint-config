@@ -65,7 +65,7 @@
     "devDependencies": {
         "@augu/tsconfig": "1.2.0",
         "@stylistic/eslint-plugin": "5.1.0",
-        "@types/bun": "1.2.17",
+        "@types/bun": "1.2.18",
         "@types/debug": "4.1.12",
         "@types/eslint": "9.6.1",
         "@types/node": "24.0.10",
