@@ -55,7 +55,7 @@
         }
     },
     "dependencies": {
-        "@actions/core": "2.0.1",
+        "@actions/core": "2.0.2",
         "@noelware/utils": "2.5.1",
         "debug": "4.4.3",
         "defu": "6.1.4",
