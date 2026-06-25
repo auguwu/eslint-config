@@ -74,7 +74,7 @@
         "eslint": "9.39.4",
         "eslint-config-prettier": "10.1.8",
         "eslint-formatter-codeframe": "7.32.2",
-        "eslint-plugin-astro": "2.1.0",
+        "eslint-plugin-astro": "2.1.1",
         "eslint-plugin-vue": "10.9.2",
         "prettier": "3.8.4",
         "tsup": "8.5.1",
