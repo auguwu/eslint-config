@@ -71,7 +71,7 @@
         "@types/node": "26.2.0",
         "astro-eslint-parser": "1.4.0",
         "colorette": "2.0.20",
-        "eslint": "9.39.5",
+        "eslint": "10.9.0",
         "eslint-config-prettier": "10.1.8",
         "eslint-formatter-codeframe": "7.32.2",
         "eslint-plugin-astro": "3.1.0",
